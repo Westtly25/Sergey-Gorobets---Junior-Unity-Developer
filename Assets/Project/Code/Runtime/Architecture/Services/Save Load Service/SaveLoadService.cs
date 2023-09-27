@@ -47,10 +47,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
             await UniTask.CompletedTask;
         }
 
-        public void CreateNewSave()
-        {
+        public void CreateNewSave() =>
             gameData = new();
-        }
 
         public async UniTask LoadAsync()
         {

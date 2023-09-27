@@ -48,7 +48,7 @@ namespace Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system
             for (int i = 0; i < listeners.Count; i++)
                 listeners[i].Pause(isPaused);
         }
-
+        
         public void SetPauseSimpleWay(bool isPaused)
         {
             IsPaused = isPaused;
