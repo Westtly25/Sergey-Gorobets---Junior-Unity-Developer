@@ -21,6 +21,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Meta
         {
             await windowsHandler.Initialize();
             await saveLoadService.LoadAsync();
+
+            windowsHandler.Show<MenuWindow>();
         }
     }
 }

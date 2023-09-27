@@ -9,29 +9,46 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         private InventorySlotView[] inventorySlotViews;
 
         private IAmmoInventory ammoInventory;
-        private IWeaponsInventory inventoryHandler;
+        private IWeaponsInventory weaponInventory;
+
+        private void Awake()
+        {
+            if (inventorySlotViews == null)
+                inventorySlotViews = GetComponentsInChildren<InventorySlotView>();
+        }
 
         private void OnDisable() =>
             UnSubscribe();
 
         public void Initialize(IWeaponsInventory weaponInventory, IAmmoInventory ammoInventory)
         {
-            this.inventoryHandler = weaponInventory;
+            this.weaponInventory = weaponInventory;
             this.ammoInventory = ammoInventory;
 
             Subscribe();
         }
 
-        private void Subscribe() =>
-            inventoryHandler.InventoryUpdated += OnSlotDataUpdated;
+        private void Subscribe()
+        {
+            weaponInventory.InventoryUpdated += OnSlotDataUpdated;
+            ammoInventory.AmmoChanged += OnAmmoChanged;
+        }
 
-        private void UnSubscribe() =>
-            inventoryHandler.InventoryUpdated += OnSlotDataUpdated;
+        private void UnSubscribe()
+        {
+            weaponInventory.InventoryUpdated += OnSlotDataUpdated;
+            ammoInventory.AmmoChanged -= OnAmmoChanged;
+        }
 
         private void OnSlotDataUpdated(int id, WeaponConfig weapon)
         {
             int amount = ammoInventory.Get(weapon.Ammo.BulletType).Stock;
             inventorySlotViews[id].SetData(weapon.Icon, amount);
+        }
+
+        private void OnAmmoChanged(AmmoEntry ammoEntry)
+        {
+
         }
     }
 }

@@ -20,11 +20,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3593602699232386869, guid: 2e9e65609f72e0b47bddae71c8eb345a,
         type: 3}
-      propertyPath: pivotPoint
-      value: 
-      objectReference: {fileID: 4367336126605868808}
-    - target: {fileID: 3593602699232386869, guid: 2e9e65609f72e0b47bddae71c8eb345a,
-        type: 3}
       propertyPath: shootPoint
       value: 
       objectReference: {fileID: 7942637939965917107}
@@ -105,18 +100,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 694359336353017860}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4367336126605868808 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3835159446151925516, guid: 2e9e65609f72e0b47bddae71c8eb345a,
-    type: 3}
-  m_PrefabInstance: {fileID: 694359336353017860}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9987c88b9462d5e4a99e01ebb1d5bd3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7942637939965917107 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7465621542076499895, guid: 2e9e65609f72e0b47bddae71c8eb345a,
@@ -151,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 25ef084687daa014b8538f35cf0d5aa6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.1182
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 25ef084687daa014b8538f35cf0d5aa6, type: 3}
       propertyPath: m_LocalRotation.w

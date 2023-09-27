@@ -13,9 +13,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
         [Header("CONFIGURATION DATA")]
         private string filePath; 
 
-        [SerializeField, Min(0), Range(0, 12)]
-        private byte currentId = 0;
-
         [Header("COMPONENTS")]
         private GameData gameData;
 
@@ -38,7 +35,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
         public async UniTask Initialize()
         {
-            CreateFilePath();
+            filePath = CreateFilePath();
 
             List<IPersistentDataListener> dependencies = diContainer.ResolveAll<IPersistentDataListener>();
 
@@ -76,9 +73,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
         private string CreateFilePath()
         {
-            Debug.Log($"Save directory path : {Application.persistentDataPath + AppFileConfigs.SavesFilesFolder}");
-
-           return Application.persistentDataPath + AppFileConfigs.SavesFilesFolder;
+           return Application.persistentDataPath + AppFileConfigs.SavesFilesFolder + AppFileConfigs.SavesFileName;
         }
     }
 }

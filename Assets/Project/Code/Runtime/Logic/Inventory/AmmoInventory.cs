@@ -9,6 +9,8 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
     {
         private Dictionary<AmmoType, AmmoEntry> ammoList;
 
+        public event Action<AmmoEntry> AmmoChanged;
+
         public AmmoInventory()
         {
             ammoList = new Dictionary<AmmoType, AmmoEntry>(3)
@@ -38,7 +40,10 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
             AmmoEntry ammoToSpend = Get(ammoType);
 
             if (ammoToSpend != null && ammoToSpend.Stock > 0)
+            {
                 ammoToSpend.Stock -= amount;
+                AmmoChanged?.Invoke(ammoToSpend);
+            }
         }
 
         public AmmoEntry Get(AmmoType ammoType)

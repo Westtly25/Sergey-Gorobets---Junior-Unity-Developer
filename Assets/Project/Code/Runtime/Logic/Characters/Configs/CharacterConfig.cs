@@ -5,6 +5,9 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 {
     public class CharacterConfig : ScriptableObject
     {
+        [SerializeField, Range(0.5f, 2f)]
+        public float WalkSpeed;
+
         [SerializeField, Range(2f, 5f)]
         public float RunSpeed;
 

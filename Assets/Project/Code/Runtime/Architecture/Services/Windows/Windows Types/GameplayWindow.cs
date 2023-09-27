@@ -23,8 +23,8 @@ namespace Assets.Code.Runtime.Services.Windows
             windowsHandler = diContainer.TryResolve<IWindowsHandler>();
             ammoInventory = diContainer.TryResolve<IAmmoInventory>();
             inventoryHandler = diContainer.TryResolve<IWeaponsInventory>();
-
             hero = diContainer.TryResolve<Hero>();
+
             healthPresenter.Initialize(hero.Health);
             inventoryView.Initialize(inventoryHandler, ammoInventory);
         }

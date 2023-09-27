@@ -5,13 +5,11 @@
         public static class AppFileConfigs
         {
             public const string SavesFilesFolder = "/Saves/";
-            public const string SavesFileName = "Save_";
+            public const string SavesFileName = "Save";
         }
 
         public static class AppDefaultSettings
         {
-            public const byte InventoryFixedSize = 3;
-            public const float EffectsVolume = 1f;
         }
 
         public static class ScenesConstants

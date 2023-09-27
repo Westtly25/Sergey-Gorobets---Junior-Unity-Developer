@@ -41,12 +41,13 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
         {
             if ((layerMask.value & (1 << other.gameObject.layer)) > 0)
             {
-                Destroy(gameObject);
                 Debug.Log("Collision with LayerMask");
+                Destroy(gameObject);
             }
             else
             {
                 Debug.Log("Collision with other layers");
+                Destroy(gameObject);
             }
         }
     }

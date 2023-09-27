@@ -24,6 +24,9 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         public void SetData(Sprite icon) =>
             iconImage.sprite = icon;
 
+        public void SetData(int ammoStock) =>
+           ammoText.text = ammoStock.ToString();
+
         public void SetData(Sprite icon, int ammo)
         {
             iconImage.sprite = icon;

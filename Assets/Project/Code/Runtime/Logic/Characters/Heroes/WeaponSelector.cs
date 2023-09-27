@@ -50,7 +50,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha0))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 if (weapons[0] != null)
                 {
@@ -61,20 +61,24 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                if (weapons[1] != null)
-                    weapons[1].gameObject.SetActive(true);
-
-                DisableActiveWeapon();
-            }
-
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (weapons[2] != null)
-                    weapons[2].gameObject.SetActive(true);
+                if (weapons[1] != null)
+                {
+                    DisableActiveWeapon();
+                    activeWeapon = weapons[1];
+                    weapons[1].gameObject.SetActive(true);
+                }
+            }
 
-                DisableActiveWeapon();
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (weapons[2] != null)
+                {
+                    DisableActiveWeapon();
+                    activeWeapon = weapons[2];
+                    weapons[2].gameObject.SetActive(true);
+                }
             }
         }
 
@@ -94,11 +98,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 
                 return;
             }
-        }
-
-        private void Swap()
-        {
-
         }
 
         private Weapon SpawnWeapon(WeaponConfig weaponConfig)
