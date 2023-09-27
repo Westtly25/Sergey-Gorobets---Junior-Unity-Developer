@@ -7,7 +7,7 @@ namespace Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system
 {
     public sealed class PauseHandler : IPauseHandler
     {
-        private readonly List<IPauseListener> listeners = new();
+        private readonly List<IPauseListener> listeners = new(10);
         private bool isPaused;
 
         public bool IsPaused
@@ -31,13 +31,10 @@ namespace Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system
 
             await UniTask.CompletedTask;
         }
-
         public void Register(IPauseListener listener) =>
             listeners.Add(listener);
-
         public void UnRegister(IPauseListener listener) =>
             listeners.Remove(listener);
-
         public void SetPaused(bool isPaused)
         {
             IsPaused = isPaused;

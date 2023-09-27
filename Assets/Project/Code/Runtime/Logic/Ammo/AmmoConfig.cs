@@ -13,14 +13,11 @@ namespace Assets.Project.Code.Runtime.Logic.Weapons
         [SerializeField, Range(1, 100)]
         private int damage;
         [SerializeField]
-        private ParticleSystem hitVfx;
-        [SerializeField]
         private Projectile projectile;
 
         public AmmoType BulletType => bulletType;
         public float Speed => speed;
         public int Damage => damage;
-        public ParticleSystem HitVfx => hitVfx;
         public Projectile Projectile => projectile;
     }
 }

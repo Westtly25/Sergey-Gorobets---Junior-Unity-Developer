@@ -12,8 +12,8 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
         private AmmoConfig bulletConfig;
         [SerializeField]
         private Rigidbody rigBody;
-
-        private ParticleSystem impactVisualEffect;
+        [SerializeField]
+        private LayerMask layerMask;
 
         private IMemoryPool pool;
 
@@ -29,14 +29,25 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
         public void OnSpawned(Vector3 from, IMemoryPool pool)
         {
             this.pool = pool;
-
-            Launch();
         }
 
         public void OnDespawned()
         {
             if (pool != null)
                 pool.Despawn(this);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if ((layerMask.value & (1 << other.gameObject.layer)) > 0)
+            {
+                Destroy(gameObject);
+                Debug.Log("Collision with LayerMask");
+            }
+            else
+            {
+                Debug.Log("Collision with other layers");
+            }
         }
     }
 }

@@ -7,9 +7,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
     public class HeroAnimator : MonoBehaviour
     {
         [SerializeField]
-        private CharacterController characterController;
-
-        [SerializeField]
         public Animator animator;
 
         private static readonly int Speed = Animator.StringToHash("Speed");
@@ -18,11 +15,8 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         private static readonly int IdleHash = Animator.StringToHash("Idl");
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
-        private void Awake()
-        {
-            characterController = GetComponent<CharacterController>();
+        private void Awake() =>
             animator = GetComponent<Animator>();
-        }
 
         public void SetAnimatorController(AnimatorController animatorController)
         {
@@ -31,6 +25,9 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 
             animator.runtimeAnimatorController = animatorController;
         }
+
+        public void PauseAnimator(bool isPaused) =>
+            animator.speed = isPaused ? 0 : 1;
 
         public void PlayAttack() =>
             animator.SetTrigger(Attack);

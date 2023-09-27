@@ -1,6 +1,5 @@
 using System;
 using Zenject;
-using System.IO;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
@@ -22,6 +21,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
         [SerializeField]
         private readonly List<IPersistentDataListener> saveDataContracts;
+
+        public GameData SaveData => gameData;
 
         [Header("Injected Services")]
         private readonly DiContainer diContainer;
@@ -73,7 +74,11 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
             await filDataHandler.WriteFileAsync(filePath, toSave);
         }
 
-        private string CreateFilePath() =>
-            Application.persistentDataPath + AppFileConfigs.SavesFilesFolder;
+        private string CreateFilePath()
+        {
+            Debug.Log($"Save directory path : {Application.persistentDataPath + AppFileConfigs.SavesFilesFolder}");
+
+           return Application.persistentDataPath + AppFileConfigs.SavesFilesFolder;
+        }
     }
 }

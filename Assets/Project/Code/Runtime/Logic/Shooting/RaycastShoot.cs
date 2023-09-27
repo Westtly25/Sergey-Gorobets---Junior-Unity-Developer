@@ -47,6 +47,9 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
 
         public void PerformShoot()
         {
+            if (!ammoInventory.IsAmmoEnoughForShoot(activeWeapon.WeaponConfig.Ammo.BulletType))
+                return;
+
             CreateRaycast();
             SpawnProjectile();
             PerformEffects();
@@ -61,13 +64,13 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
             {
                 Collider hitCollider = hitInfo.collider;
 
+                directionTo = (hitInfo.point - activeWeapon.ShootPoint.transform.position).normalized;
+
                 if (hitCollider.TryGetComponent(out IDamageable damageable))
                 {
                     Debug.DrawLine(activeWeapon.ShootPoint.CachedPosition, hitInfo.point, Color.green, 10f);
                     damageable.ApplyDamage(activeWeapon.WeaponConfig.Ammo.Damage);
-                    directionTo = (hitInfo.point - activeWeapon.ShootPoint.transform.position).normalized; ;
                 }
-
             }
             else directionTo = ray.direction;
         }

@@ -49,6 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletConfig: {fileID: 11400000, guid: 8a3a5760a6742ea4d811dfe26f79bffe, type: 2}
   rigBody: {fileID: 6162280021210051864}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1792
 --- !u!54 &6162280021210051864
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -109,6 +112,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Time
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529369187047885936, guid: e6b19763e7c03e845a7732e90a8636bd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529369187047885936, guid: e6b19763e7c03e845a7732e90a8636bd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.45041054
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529369187047885936, guid: e6b19763e7c03e845a7732e90a8636bd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529369187047885936, guid: e6b19763e7c03e845a7732e90a8636bd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4809434356420504799, guid: e6b19763e7c03e845a7732e90a8636bd,
         type: 3}

@@ -17,11 +17,8 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
         private void Awake() =>
             animator = GetComponent<Animator>();
 
-        public void Pause() =>
-            animator.speed = 0;
-
-        public void UnPause() =>
-            animator.speed = 1;
+        public void PauseAnimator(bool isPaused) =>
+            animator.speed = isPaused ? 0 : 1;
 
         public void PlayDeath() =>
             animator.SetTrigger(Die);

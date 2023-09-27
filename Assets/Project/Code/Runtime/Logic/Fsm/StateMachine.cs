@@ -7,24 +7,19 @@ namespace Assets.Project.Code.Runtime.Logic.Fsm
     {
         private const int DefaultCollectionSize = 5;
 
-        private readonly Dictionary<Type, IState<TInitializer>> _states =
+        private readonly Dictionary<Type, IState<TInitializer>> states =
             new Dictionary<Type, IState<TInitializer>>(DefaultCollectionSize);
 
-        private readonly List<Transition<TInitializer>> _anyTransitions =
+        private readonly List<Transition<TInitializer>> anyTransitions =
             new List<Transition<TInitializer>>(DefaultCollectionSize);
 
-        private readonly List<Transition<TInitializer>> _transitions =
+        private readonly List<Transition<TInitializer>> transitions =
             new List<Transition<TInitializer>>(DefaultCollectionSize);
 
-        public StateMachine()
-        {
+        public StateMachine() { }
 
-        }
-
-        public StateMachine(params IState<TInitializer>[] states)
-        {
+        public StateMachine(params IState<TInitializer>[] states) =>
             AddStates(states);
-        }
 
         public bool TransitionsEnabled { get; set; } = true;
         public bool HasCurrentState { get; private set; }
@@ -71,7 +66,7 @@ namespace Assets.Project.Code.Runtime.Logic.Fsm
             var stateFrom = GetState(typeof(TStateFrom));
             var stateTo = GetState(typeof(TStateTo));
 
-            _transitions.Add(new Transition<TInitializer>(stateFrom, stateTo, condition));
+            transitions.Add(new Transition<TInitializer>(stateFrom, stateTo, condition));
         }
 
         public void AddAnyTransition<TStateTo>(Func<bool> condition)
@@ -83,7 +78,7 @@ namespace Assets.Project.Code.Runtime.Logic.Fsm
 #endif
             var stateTo = GetState(typeof(TStateTo));
 
-            _anyTransitions.Add(new Transition<TInitializer>(null, stateTo, condition));
+            anyTransitions.Add(new Transition<TInitializer>(null, stateTo, condition));
         }
 
         public void SetStateByTransitions()
@@ -102,14 +97,10 @@ namespace Assets.Project.Code.Runtime.Logic.Fsm
         public void Run()
         {
             if (TransitionsEnabled)
-            {
                 SetStateByTransitions();
-            }
 
             if (HasCurrentState)
-            {
                 CurrentState.OnRun();
-            }
         }
 
         private void AddState(IState<TInitializer> state)
@@ -120,15 +111,15 @@ namespace Assets.Project.Code.Runtime.Logic.Fsm
 #endif
             Type stateType = state.GetType();
 #if DEBUG
-            if (_states.ContainsKey(stateType))
+            if (states.ContainsKey(stateType))
                 throw new Exception($"You are trying to add the same state twice! The <{stateType}> already exists!");
 #endif
-            _states.Add(stateType, state);
+            states.Add(stateType, state);
         }
 
         private IState<TInitializer> GetState(Type type)
         {
-            if (_states.TryGetValue(type, out var state))
+            if (states.TryGetValue(type, out var state))
             {
                 return state;
             }
@@ -157,24 +148,24 @@ namespace Assets.Project.Code.Runtime.Logic.Fsm
 
         private Transition<TInitializer> GetTransition()
         {
-            for (var i = 0; i < _anyTransitions.Count; i++)
+            for (var i = 0; i < anyTransitions.Count; i++)
             {
-                if (_anyTransitions[i].Condition.Invoke())
+                if (anyTransitions[i].Condition.Invoke())
                 {
-                    return _anyTransitions[i];
+                    return anyTransitions[i];
                 }
             }
 
-            for (var i = 0; i < _transitions.Count; i++)
+            for (var i = 0; i < transitions.Count; i++)
             {
-                if (_transitions[i].From != CurrentState)
+                if (transitions[i].From != CurrentState)
                 {
                     continue;
                 }
 
-                if (_transitions[i].Condition.Invoke())
+                if (transitions[i].Condition.Invoke())
                 {
-                    return _transitions[i];
+                    return transitions[i];
                 }
             }
 

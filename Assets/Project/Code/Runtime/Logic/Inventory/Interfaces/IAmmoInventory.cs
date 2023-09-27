@@ -7,5 +7,6 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         void Add(AmmoClipConfig ammoConfig);
         AmmoEntry Get(AmmoType ammoType);
         void Spend(AmmoType ammoType, int amount);
+        bool IsAmmoEnoughForShoot(AmmoType ammoType);
     }
 }

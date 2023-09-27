@@ -3,9 +3,10 @@ using UnityEngine;
 using Assets.Code.Runtime.Services.Windows;
 using Assets.Project.Code.Runtime.Logic.Level;
 using Assets.Project.Code.Runtime.Logic.Characters.Heroes;
+using Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system;
 using Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service;
 using Assets.Project.Code.Runtime.Architecture.Services.Windows.Windows_Types;
-using Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system;
+using Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service.Interface;
 
 namespace Assets.Project.Code.Runtime.Architecture.Core
 {
@@ -35,6 +36,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
         {
             await windowsHandler.Initialize();
             await pauseHandler.Initialize();
+            await saveLoadService.Initialize();
+            await saveLoadService.LoadAsync();
             enemyDeathProgressWatcher.Initialize();
 
             windowsHandler.Show<GameplayWindow>();
@@ -56,6 +59,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             pauseHandler.SetPauseSimpleWay(true);
             Cursor.visible = true;
             windowsHandler.Show<WinWindow>();
+
+            saveLoadService.SaveData.WinCount++;
         }
 
         private void OnLose()
@@ -63,6 +68,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             pauseHandler.SetPauseSimpleWay(true);
             Cursor.visible = true;
             windowsHandler.Show<LoseWindow>();
+
+            saveLoadService.SaveData.WinCount++;
         }
     }
 }

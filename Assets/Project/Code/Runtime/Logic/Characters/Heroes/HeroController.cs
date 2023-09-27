@@ -50,7 +50,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
                 heroAnimator.Move(speedToMove);
                 characterController.Move(direction * speedToMove);
                 targetRotation = Quaternion.LookRotation(direction);
-
             }
             else heroAnimator.StopMove();
 

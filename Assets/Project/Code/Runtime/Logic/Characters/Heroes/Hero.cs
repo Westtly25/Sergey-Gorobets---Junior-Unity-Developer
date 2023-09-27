@@ -14,16 +14,14 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
     {
         [SerializeField]
         private Health health;
-
         [SerializeField]
         private HeroConfig heroConfig;
-
         [SerializeField]
         private HeroController movement;
 
         public Health Health => health;
 
-        private void Start()
+        private void Awake()
         {
             health.SetData(heroConfig.Health, heroConfig.Health);
             movement.Initialize(heroConfig);

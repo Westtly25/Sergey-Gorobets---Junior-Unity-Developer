@@ -37,7 +37,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         {
             AmmoEntry ammoToSpend = Get(ammoType);
 
-            if (ammoToSpend != null && ammoToSpend.Stock <= 0)
+            if (ammoToSpend != null && ammoToSpend.Stock > 0)
                 ammoToSpend.Stock -= amount;
         }
 
@@ -48,5 +48,8 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
 
             return null;
         }
+
+        public bool IsAmmoEnoughForShoot(AmmoType ammoType) =>
+            Get(ammoType).Stock > 0;
     }
 }

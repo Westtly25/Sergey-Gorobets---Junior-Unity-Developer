@@ -4,7 +4,7 @@
     {
         public static class AppFileConfigs
         {
-            public const string SavesFilesFolder = "Saves";
+            public const string SavesFilesFolder = "/Saves/";
             public const string SavesFileName = "Save_";
         }
 
