@@ -8,10 +8,8 @@ namespace Assets.Code.Runtime.Services.Windows
         protected DiContainer diContainer;
 
         [Inject]
-        public void Constructor(DiContainer diContainer)
-        {
+        public void Constructor(DiContainer diContainer) =>
             this.diContainer = diContainer;
-        }
 
         public virtual void Initialize() { }
 
@@ -29,6 +27,5 @@ namespace Assets.Code.Runtime.Services.Windows
 
         public virtual void Subscribe() { }
         public virtual void UnSubscribe() { }
-
     }
 }

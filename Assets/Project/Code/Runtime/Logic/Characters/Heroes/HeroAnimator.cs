@@ -5,14 +5,15 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
     [RequireComponent(typeof(Animator))]
     public class HeroAnimator : MonoBehaviour
     {
-        [SerializeField]
-        public Animator animator;
+        private readonly int Speed = Animator.StringToHash("Speed");
+        private readonly int Attack = Animator.StringToHash("SimpleAttack");
+        private readonly int DieHash = Animator.StringToHash("Die");
+        private readonly int IdleHash = Animator.StringToHash("Idl");
+        private readonly int IsMoving = Animator.StringToHash("IsMoving");
 
-        private static readonly int Speed = Animator.StringToHash("Speed");
-        private static readonly int Attack = Animator.StringToHash("SimpleAttack");
-        private static readonly int DieHash = Animator.StringToHash("Die");
-        private static readonly int IdleHash = Animator.StringToHash("Idl");
-        private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+        [SerializeField]
+        private Animator animator;
+
 
         private void Awake() =>
             animator = GetComponent<Animator>();

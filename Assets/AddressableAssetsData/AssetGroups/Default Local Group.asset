@@ -32,8 +32,88 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3f1e52dec055a3a4f850420ef19cb2b2
-    m_Address: Assets/Project/Art/Cubemaps/FS002/FS002_Night_Cubemap.mat
+  - m_GUID: 16ee62a05f29efc4aa4224f34a4b3158
+    m_Address: Hero Variant
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 554d580213ec8f1429a0e97545fdf07a
+    m_Address: Enemy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 595f82b00d20e4349b5904492418a64c
+    m_Address: Pistol Projectile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c10e444f251b8f64293cded2784646db
+    m_Address: Gameplay Window
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9940dc7c395524840a0a80721b335465
+    m_Address: Loading Window
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 809c93cbaa84d50489b7098e82ab50e4
+    m_Address: Quite Window
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 605a4e354dea70840a0914438994aca4
+    m_Address: Menu Window
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03897396c610f7b4f81b12d1431ec308
+    m_Address: Loose Window
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ab1d7c303cf4e14ab96c92014579826
+    m_Address: Win Window
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e34deed2196eca949b59e634577fa1b3
+    m_Address: Weapon Rifle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e9e65609f72e0b47bddae71c8eb345a
+    m_Address: Weapon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e00551e987bb6ae4482429b5a7ac31b3
+    m_Address: Weapon Shotgun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e4065065dd1b7941b41a686c8c71a10
+    m_Address: Weapon Pistol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d1178705cbd36664f830af676ad9c950
+    m_Address: Pickup Item
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d54004cb86e4d1d49b3e9c2b2008addf
+    m_Address: Pickup Item Shotgun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ff3c75b9458cef429e7710594797c28
+    m_Address: Pickup Pistol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a63200679f26b5f48bdeb8544827d8fe
+    m_Address: Pickup Item Rifle
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

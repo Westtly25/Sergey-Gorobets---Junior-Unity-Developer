@@ -5,7 +5,7 @@ using Assets.Project.Code.Runtime.Logic.Characters.Enemies;
 
 namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 {
-    public class HeroController : MonoBehaviour
+    public class HeroMovementController : MonoBehaviour
     {
         [SerializeField]
         private CharacterController characterController;
@@ -17,10 +17,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         private HeroConfig heroConfig;
 
         private Quaternion targetRotation;
-
-        [Inject]
-        public void Construct(CameraController cameraController) =>
-            this.cameraController = cameraController;
 
         private void Awake() =>
             InitializeComponents();
@@ -63,6 +59,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         {
             heroAnimator = GetComponent<HeroAnimator>();
             characterController = GetComponent<CharacterController>();
+            cameraController = Camera.main.GetComponent<CameraController>();
         }
     }
 }

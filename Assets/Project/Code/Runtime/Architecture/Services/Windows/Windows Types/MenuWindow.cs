@@ -8,10 +8,11 @@ using Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service;
 using Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service.Interface;
 using Assets.Project.Code.Runtime.Architecture.Services.Scene_Load_Service;
 using Assets.Project.Code.Shared;
+using UnityEngine.Playables;
 
 namespace Assets.Code.Runtime.Services.Windows
 {
-    public sealed class MenuWindow : Window, IPersistentDataListener
+    public sealed class MenuWindow : Window
     {
         [SerializeField]
         private Button playButton;
@@ -31,9 +32,17 @@ namespace Assets.Code.Runtime.Services.Windows
 
         public override void Initialize()
         {
-            windowsHandler = diContainer.Resolve<IWindowsHandler>();
-            saveLoadService = diContainer.Resolve<ISaveLoadService>();
-            sceneLoader = diContainer.Resolve<ISceneLoader>();
+            windowsHandler = diContainer.TryResolve<IWindowsHandler>();
+            saveLoadService = diContainer.TryResolve<ISaveLoadService>();
+            sceneLoader = diContainer.TryResolve<ISceneLoader>();
+        }
+
+        public override void Show()
+        {
+            base.Show();
+
+            winsText.text = saveLoadService.SaveData.WinCount.ToString();
+            losesText.text = saveLoadService.SaveData.LoseCount.ToString();
         }
 
         public override void Subscribe()
@@ -51,22 +60,12 @@ namespace Assets.Code.Runtime.Services.Windows
         private async void Play()
         {
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
-            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.MetaScene);
+            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }
 
         private void Quite() =>
             windowsHandler.ShowPopUp<QuiteWindow>();
-
-        public void LoadData(GameData gameData)
-        {
-            winsText.text = gameData.WinCount.ToString();
-            losesText.text = gameData.LoseCount.ToString();
-        }
-
-        public void SaveData(ref GameData gameData)
-        {
-        }
     }
 }

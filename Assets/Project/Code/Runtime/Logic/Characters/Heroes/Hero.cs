@@ -8,7 +8,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(WeaponsCollector))]
     [RequireComponent(typeof(HeroAnimator))]
-    [RequireComponent(typeof(HeroController))]
+    [RequireComponent(typeof(HeroMovementController))]
     [RequireComponent(typeof(CharacterController))]
     public class Hero : MonoBehaviour, IDamageable
     {
@@ -17,11 +17,16 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         [SerializeField]
         private HeroConfig heroConfig;
         [SerializeField]
-        private HeroController controller;
+        private HeroMovementController controller;
 
         public Health Health => health;
 
         private void Awake()
+        {
+            controller = GetComponent<HeroMovementController>();
+        }
+
+        private void Start()
         {
             health.SetData(heroConfig.Health, heroConfig.Health);
             controller.Initialize(heroConfig);

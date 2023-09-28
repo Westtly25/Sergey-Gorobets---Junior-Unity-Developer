@@ -11,9 +11,9 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
         public int Id;
 
         [SerializeField, Min(0)]
-        public int WinCount;
+        public int WinCount = 0;
 
         [SerializeField, Min(0)]
-        public int LoseCount;
+        public int LoseCount = 0;
     }
 }

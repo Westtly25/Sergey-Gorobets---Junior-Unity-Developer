@@ -1,5 +1,4 @@
-﻿using System;
-using Zenject;
+﻿using Zenject;
 using UnityEngine;
 using Assets.Project.Code.Runtime.Logic.Weapons;
 using Assets.Project.Code.Runtime.Logic.Inventory;
@@ -68,7 +67,6 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
 
                 if (hitCollider.TryGetComponent(out IDamageable damageable))
                 {
-                    Debug.DrawLine(activeWeapon.ShootPoint.CachedPosition, hitInfo.point, Color.green, 10f);
                     damageable.ApplyDamage(activeWeapon.WeaponConfig.Ammo.Damage);
                 }
             }

@@ -138,7 +138,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 69d0543749c86504984f936f3cf95f7c, type: 2}
+      objectReference: {fileID: 22100000, guid: 3690fe7e6bd64df40bb3072581d9b9b0,
+        type: 2}
     - target: {fileID: 5866666021909216657, guid: cbe1440a50bd0854ca90726e3bd846c9,
         type: 3}
       propertyPath: m_CullingMode
@@ -258,7 +259,7 @@ MonoBehaviour:
     maxHealth: 0
     isDead: 0
   heroConfig: {fileID: 11400000, guid: 3780fd973561f384abe932f271bc78be, type: 2}
-  movement: {fileID: 8217921397393528577}
+  controller: {fileID: 0}
 --- !u!114 &3500679925717402650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2babf202118f7df41865f083baddf7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 565310944648879223}
   animator: {fileID: 3626648319637951136}
 --- !u!114 &791458165889274383
 MonoBehaviour:

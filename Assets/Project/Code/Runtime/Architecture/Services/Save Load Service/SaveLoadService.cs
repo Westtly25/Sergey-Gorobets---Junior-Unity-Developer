@@ -16,10 +16,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
         [Header("COMPONENTS")]
         private GameData gameData;
-
-        [SerializeField]
-        private readonly List<IPersistentDataListener> saveDataContracts;
-
         public GameData SaveData => gameData;
 
         [Header("Injected Services")]
@@ -27,21 +23,12 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
         private readonly IFileDataHandler filDataHandler;
 
         [Inject]
-        public SaveLoadService(DiContainer diContainer,
-                               IFileDataHandler fileDataHandler)
-        {
-            this.diContainer = diContainer;
+        public SaveLoadService(IFileDataHandler fileDataHandler) =>
             this.filDataHandler = fileDataHandler;
-        }
 
-        public async UniTask Initialize()
+        public async UniTaskVoid Initialize()
         {
             filePath = CreateFilePath();
-
-            List<IPersistentDataListener> dependencies = diContainer.ResolveAll<IPersistentDataListener>();
-
-            for (int i = 0; i < dependencies.Count; i++)
-                saveDataContracts.Add(dependencies[i]);
 
             await UniTask.CompletedTask;
         }
@@ -51,21 +38,15 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
         public async UniTask LoadAsync()
         {
-            string loaded = await filDataHandler.ReadFileAsync(filePath);
+            string loaded = await filDataHandler.ReadFileAsync(filePath, fileName);
 
-            if (string.IsNullOrEmpty(loaded) || string.IsNullOrWhiteSpace(loaded))
+            if (string.IsNullOrEmpty(loaded))
                 CreateNewSave();
             else gameData = JsonUtility.FromJson<GameData>(loaded);
-
-            for (int i = 0; i < saveDataContracts.Count; i++)
-                saveDataContracts[i].LoadData(gameData);
         }
 
         public async UniTask SaveAsync()
         {
-            for (int i = 0; i < saveDataContracts.Count; i++)
-                saveDataContracts[i].SaveData(ref gameData);
-
             string toSave = JsonUtility.ToJson(gameData);
 
             await filDataHandler.WriteFileAsync(filePath, fileName, toSave);

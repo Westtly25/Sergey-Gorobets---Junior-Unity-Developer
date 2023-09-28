@@ -1,5 +1,4 @@
-﻿using System;
-using Zenject;
+﻿using Zenject;
 using UnityEngine;
 using System.Collections.Generic;
 using Assets.Project.Code.Runtime.Logic.Weapons;
@@ -46,46 +45,32 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
             inventoryHandler.InventoryUpdated -= OnInventoryUpdated;
 
         private void OnInventoryUpdated(int id, WeaponConfig weapon) =>
-            Equip(id, weapon);
+            OnEquip(id, weapon);
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                if (weapons[0] != null)
-                {
-                    DisableActiveWeapon();
-
-                    activeWeapon = weapons[0];
-                    weapons[0].gameObject.SetActive(true);
-                    animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
-                }
-            }
+                SelectWeapon(0);
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                if (weapons[1] != null)
-                {
-                    DisableActiveWeapon();
-                    activeWeapon = weapons[1];
-                    weapons[1].gameObject.SetActive(true);
-                    animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
-                }
-            }
+                SelectWeapon(1);
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
+                SelectWeapon(2);
+        }
+
+        private void SelectWeapon(int index)
+        {
+            if (weapons[index] != null)
             {
-                if (weapons[2] != null)
-                {
-                    DisableActiveWeapon();
-                    activeWeapon = weapons[2];
-                    weapons[2].gameObject.SetActive(true);
-                    animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
-                }
+                DisableActiveWeapon();
+                activeWeapon = weapons[index];
+                weapons[index].gameObject.SetActive(true);
+                animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
             }
         }
 
-        private void Equip(int id, WeaponConfig weaponConfig)
+        private void OnEquip(int id, WeaponConfig weaponConfig)
         {
             if (weapons[id] == null)
             {

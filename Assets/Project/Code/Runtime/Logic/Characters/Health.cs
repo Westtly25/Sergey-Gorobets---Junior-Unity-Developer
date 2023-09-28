@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Project.Code.Runtime.Logic.Characters
 {
     [Serializable]
-    public sealed class Health
+    public sealed class Health : Attribute
     {
         [SerializeField, Min(-1)]
         private float health;

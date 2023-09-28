@@ -8,4 +8,20 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Hero Simpe Animator
   m_Controller: {fileID: 9100000, guid: dd8ffb6e585a45441a45b820af34c702, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 0712009955c551e42963c977ccfca8a8,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 7ce457c0664f6a04ebfc08fab1ee5aa4,
+      type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: ef77d98d2165fc542b2d50de9592468b,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 4ce924069c16deb49b0a7c457301aa12,
+      type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: ffcc0bc1740476849ab283d708971a3c,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: e5b33fdcde9f1c942a7ac0bc730807d2,
+      type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 8616cdff8de96064da8f77278ede1dfb,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 8616cdff8de96064da8f77278ede1dfb,
+      type: 3}

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 23d23ecade4894148a7d9afc36d7687c, type: 3}
   m_Name: Hero-config
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Project.Code.Runtime.Logic.Characters.Enemies:HeroConfig
-  RunSpeed: 3
-  Health: 100
-  defaultAnimator: {fileID: 9100000, guid: 69d0543749c86504984f936f3cf95f7c, type: 2}
-  WalkSpeed: 1
-  RotateSpeed: 637
+  WalkSpeed: 0
+  RunSpeed: 0
+  Health: 0
+  defaultAnimator: {fileID: 22100000, guid: 3690fe7e6bd64df40bb3072581d9b9b0, type: 2}
+  RotateSpeed: 0
