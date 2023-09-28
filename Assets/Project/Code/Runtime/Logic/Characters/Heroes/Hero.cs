@@ -17,14 +17,14 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         [SerializeField]
         private HeroConfig heroConfig;
         [SerializeField]
-        private HeroController movement;
+        private HeroController controller;
 
         public Health Health => health;
 
         private void Awake()
         {
             health.SetData(heroConfig.Health, heroConfig.Health);
-            movement.Initialize(heroConfig);
+            controller.Initialize(heroConfig);
         }
 
         public void ApplyDamage(float damage) =>

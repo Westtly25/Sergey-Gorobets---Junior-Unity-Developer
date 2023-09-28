@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using Assets.Project.Code.Runtime.Architecture.Services.Scene_Load_Service;
+using Unity.VisualScripting;
+using Assets.Project.Code.Shared;
 
 namespace Assets.Code.Runtime.Services.Windows
 {
@@ -14,14 +17,11 @@ namespace Assets.Code.Runtime.Services.Windows
         [SerializeField]
         private Button exiteButton;
 
-        public override void Show()
-        {
-            base.Show();
-        }
+        private ISceneLoader sceneLoader;
 
-        public override void Hide()
+        public override void Initialize()
         {
-            base.Hide();
+            this.sceneLoader = diContainer.Resolve<ISceneLoader>();
         }
 
         public override void Subscribe()
@@ -38,16 +38,16 @@ namespace Assets.Code.Runtime.Services.Windows
 
         private async void Restart()
         {
-            SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-            await Task.Delay(TimeSpan.FromSeconds(2));
-            SceneManager.LoadSceneAsync(3, LoadSceneMode.Single);
+            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
+            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }
 
         private async void Exite()
         {
-            SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-            await Task.Delay(TimeSpan.FromSeconds(2));
-            SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
+            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
+            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.MetaScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }
     }
 }

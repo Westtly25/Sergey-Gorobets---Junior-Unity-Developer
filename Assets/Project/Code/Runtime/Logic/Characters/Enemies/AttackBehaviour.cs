@@ -8,6 +8,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
     public class AttackBehaviour : MonoBehaviour
     {
         private const float OffsetY = 0.5f;
+        [SerializeField]
         private bool isAttacking = false;
 
         [SerializeField]
@@ -15,6 +16,13 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 
         protected Collider[] hits = new Collider[1];
         protected IEnumerator routine;
+
+        private EnemyAnimator animator;
+
+        private void Awake()
+        {
+            animator = GetComponent<EnemyAnimator>();
+        }
 
         public void Initialize(AttackConfig attackConfig) =>
             this.attackConfig = attackConfig;
@@ -36,6 +44,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
             if (routine == null)
                 return;
 
+            animator.StopAttack();
             StopCoroutine(routine);
             routine = null;
             isAttacking = false;
@@ -52,7 +61,10 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
                 if (Hit(out Collider hit))
                 {
                     if (hit.TryGetComponent<IDamageable>(out IDamageable damageable))
-                            damageable.ApplyDamage(attackConfig.Damage);
+                    {
+                        damageable.ApplyDamage(attackConfig.Damage);
+                        animator.PlayAttack();
+                    }
                 }
 
                 yield return new WaitForSeconds(attackConfig.Cooldown);

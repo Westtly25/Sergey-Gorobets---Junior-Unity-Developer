@@ -9,7 +9,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
     {
         private readonly NavMeshAgent agent;
         private readonly AttackBehaviour attackBehaviour;
-        private readonly EnemyAnimator animator;
         private readonly TargetDetector detector;
 
         private Transform target;
@@ -19,13 +18,11 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
 
         public AttackState(Enemy enemy,
                            TargetDetector detector,
-                           EnemyAnimator animator,
                            NavMeshAgent agent,
                            AttackBehaviour attackBehaviour)
         {
             this.Initializer = enemy;
             this.detector = detector;
-            this.animator = animator;
             this.agent = agent;
             this.attackBehaviour = attackBehaviour;
         }
@@ -42,15 +39,9 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
             TargetInAttackZone = IsTargetInAttackZone();
 
             if (TargetInAttackZone)
-            {
-                animator.PlayAttack();
                 attackBehaviour.PerformAttack(target);
-            }
             else
-            {
                 attackBehaviour.InterruptAttack();
-                animator.StopAttack();
-            }
         }
 
         private bool IsTargetInAttackZone() =>

@@ -65,7 +65,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
         {
             awaitState = new (this, animator);
             chaseState = new (this, detector, agent, animator);
-            attackState = new (this, detector, animator, agent, attackBehaviour);
+            attackState = new (this, detector, agent, attackBehaviour);
             deathState = new (this, animator, agent);
 
             enemyFsm = new StateMachine<Enemy>(awaitState, chaseState, attackState, deathState);

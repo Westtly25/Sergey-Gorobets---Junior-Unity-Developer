@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service;
 using Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service.Interface;
+using Assets.Project.Code.Runtime.Architecture.Services.Scene_Load_Service;
+using Assets.Project.Code.Shared;
 
 namespace Assets.Code.Runtime.Services.Windows
 {
@@ -25,11 +27,13 @@ namespace Assets.Code.Runtime.Services.Windows
 
         private IWindowsHandler windowsHandler;
         private ISaveLoadService saveLoadService;
+        private ISceneLoader sceneLoader;
 
         public override void Initialize()
         {
             windowsHandler = diContainer.Resolve<IWindowsHandler>();
             saveLoadService = diContainer.Resolve<ISaveLoadService>();
+            sceneLoader = diContainer.Resolve<ISceneLoader>();
         }
 
         public override void Subscribe()
@@ -46,9 +50,10 @@ namespace Assets.Code.Runtime.Services.Windows
 
         private async void Play()
         {
-            SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-            await Task.Delay(TimeSpan.FromSeconds(3f));
-            SceneManager.LoadSceneAsync(3, LoadSceneMode.Single);
+            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
+            await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.MetaScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }
 
         private void Quite() =>

@@ -11,7 +11,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
     public sealed class SaveLoadService : ISaveLoadService
     {
         [Header("CONFIGURATION DATA")]
-        private string filePath; 
+        private string filePath;
+        private readonly string fileName = AppFileConfigs.SavesFileName;
 
         [Header("COMPONENTS")]
         private GameData gameData;
@@ -54,8 +55,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
             if (string.IsNullOrEmpty(loaded) || string.IsNullOrWhiteSpace(loaded))
                 CreateNewSave();
-
-            gameData = JsonUtility.FromJson<GameData>(loaded);
+            else gameData = JsonUtility.FromJson<GameData>(loaded);
 
             for (int i = 0; i < saveDataContracts.Count; i++)
                 saveDataContracts[i].LoadData(gameData);
@@ -68,12 +68,16 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
             string toSave = JsonUtility.ToJson(gameData);
 
-            await filDataHandler.WriteFileAsync(filePath, toSave);
+            await filDataHandler.WriteFileAsync(filePath, fileName, toSave);
         }
 
         private string CreateFilePath()
         {
-           return Application.persistentDataPath + AppFileConfigs.SavesFilesFolder + AppFileConfigs.SavesFileName;
+#if UNITY_EDITOR
+            return Application.dataPath + AppFileConfigs.SavesFilesFolder;
+#elif UNITY_ANDROID
+            return Application.persistentDataPath + AppFileConfigs.SavesFilesFolder;
+#endif
         }
     }
 }

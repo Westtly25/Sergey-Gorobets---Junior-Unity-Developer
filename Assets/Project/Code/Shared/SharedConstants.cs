@@ -5,7 +5,7 @@
         public static class AppFileConfigs
         {
             public const string SavesFilesFolder = "/Saves/";
-            public const string SavesFileName = "Save";
+            public const string SavesFileName = "Save.json";
         }
 
         public static class AppDefaultSettings

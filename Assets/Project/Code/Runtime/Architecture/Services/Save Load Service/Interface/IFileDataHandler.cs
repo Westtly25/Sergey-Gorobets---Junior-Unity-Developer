@@ -5,6 +5,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service.In
     public interface IFileDataHandler
     {
         UniTask<string> ReadFileAsync(string filePath);
-        UniTask WriteFileAsync(string filePath, string text);
+        UniTask WriteFileAsync(string filePath, string fileName, string text);
     }
 }

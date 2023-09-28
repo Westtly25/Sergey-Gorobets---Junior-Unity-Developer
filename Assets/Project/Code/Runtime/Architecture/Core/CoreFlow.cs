@@ -35,8 +35,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
         {
             await windowsHandler.Initialize();
             await pauseHandler.Initialize();
-            //await saveLoadService.Initialize();
-            //await saveLoadService.LoadAsync();
             enemyDeathProgressWatcher.Initialize();
 
             windowsHandler.Show<GameplayWindow>();
@@ -57,7 +55,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
         {
             Cursor.visible = true;
             windowsHandler.Show<WinWindow>();
-            //saveLoadService.SaveData.WinCount++;
+            saveLoadService.SaveData.WinCount++;
             pauseHandler.SetPauseSimpleWay(true);
         }
 
@@ -65,7 +63,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
         {
             Cursor.visible = true;
             windowsHandler.Show<LoseWindow>();
-            //saveLoadService.SaveData.WinCount++;
+            saveLoadService.SaveData.WinCount++;
             pauseHandler.SetPauseSimpleWay(true);
         }
     }
