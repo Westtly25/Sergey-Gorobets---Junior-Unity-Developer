@@ -15,6 +15,11 @@ namespace Assets.Project.Code.Runtime.Architecture.Meta
         public override void InstallBindings()
         {
             BindWindows();
+
+            Container.BindInterfacesAndSelfTo<MetaFlow>()
+                     .FromNew()
+                     .AsSingle()
+                     .NonLazy();
         }
 
         private void BindWindows()

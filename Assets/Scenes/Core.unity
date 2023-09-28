@@ -11358,6 +11358,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup Item Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 9156185272188533455, guid: d54004cb86e4d1d49b3e9c2b2008addf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156185272188533455, guid: d54004cb86e4d1d49b3e9c2b2008addf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156185272188533455, guid: d54004cb86e4d1d49b3e9c2b2008addf,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11648,6 +11663,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickup Item Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679096949098679167, guid: a63200679f26b5f48bdeb8544827d8fe,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679096949098679167, guid: a63200679f26b5f48bdeb8544827d8fe,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679096949098679167, guid: a63200679f26b5f48bdeb8544827d8fe,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6908099426522555772, guid: a63200679f26b5f48bdeb8544827d8fe,
         type: 3}

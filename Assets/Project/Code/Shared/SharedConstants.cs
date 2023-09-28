@@ -12,7 +12,19 @@
         {
         }
 
-        public static class ScenesConstants
+        public static class CreaturesAddresses
+        {
+            public const string Hero = "Hero";
+            public const string Enemy = "Enemy";
+        }
+
+        public static class UIWindowsAddresses
+        {
+            public const string MainMenuView = "MainMenu";
+            public const string GameplayView = "Gameplay";
+        }
+
+        public static class ScenesAddresses
         {
             public const string BootstrapScene = "Bootstrap";
             public const string LoadScene = "Loading";

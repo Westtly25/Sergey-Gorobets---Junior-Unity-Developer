@@ -58,6 +58,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 
                     activeWeapon = weapons[0];
                     weapons[0].gameObject.SetActive(true);
+                    animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
                 }
             }
 
@@ -68,6 +69,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
                     DisableActiveWeapon();
                     activeWeapon = weapons[1];
                     weapons[1].gameObject.SetActive(true);
+                    animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
                 }
             }
 
@@ -78,6 +80,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
                     DisableActiveWeapon();
                     activeWeapon = weapons[2];
                     weapons[2].gameObject.SetActive(true);
+                    animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
                 }
             }
         }
@@ -103,9 +106,9 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         private Weapon SpawnWeapon(WeaponConfig weaponConfig)
         {
             Weapon weapon = Instantiate(weaponConfig.Weapon);
-            weapon.transform.SetParent(rightHand.transform, true);
-            weapon.transform.localPosition = rightHand.localPosition;
-            weapon.transform.localRotation = rightHand.localRotation;
+            weapon.transform.SetParent(rightHand, true);
+            weapon.transform.localPosition = new Vector3(0, 0, 0);
+            weapon.transform.localRotation = Quaternion.Euler(-90, -90, 0);
             return weapon;
         }
 

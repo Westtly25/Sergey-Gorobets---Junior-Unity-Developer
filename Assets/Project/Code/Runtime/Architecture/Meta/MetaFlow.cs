@@ -20,9 +20,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Meta
         public async void Initialize()
         {
             await windowsHandler.Initialize();
-            await saveLoadService.LoadAsync();
-
             windowsHandler.Show<MenuWindow>();
+            //await saveLoadService.LoadAsync();
         }
     }
 }

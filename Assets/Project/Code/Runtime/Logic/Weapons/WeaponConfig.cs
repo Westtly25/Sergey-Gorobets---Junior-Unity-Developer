@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor.Animations;
 
 namespace Assets.Project.Code.Runtime.Logic.Weapons
 {
@@ -10,7 +9,7 @@ namespace Assets.Project.Code.Runtime.Logic.Weapons
         [SerializeField]
         private Weapon prefab;
         [SerializeField]
-        private AnimatorController animatorController;
+        private AnimatorOverrideController animatorController;
 
         [SerializeField, Min(0)]
         private float cooldown;
@@ -27,6 +26,6 @@ namespace Assets.Project.Code.Runtime.Logic.Weapons
         public float Cooldown => cooldown;
         public AmmoConfig Ammo => ammo;
         public ParticleSystem ShootVfx => shootVfx;
-        public AnimatorController AnimatorController => animatorController;
+        public AnimatorOverrideController AnimatorController => animatorController;
     }
 }

@@ -12,9 +12,6 @@ namespace Assets.Code.Runtime.Services.Windows
     public sealed class MenuWindow : Window, IPersistentDataListener
     {
         [SerializeField]
-        private TextMeshProUGUI title;
-
-        [SerializeField]
         private Button playButton;
 
         [SerializeField]

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor.Animations;
 
 namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 {
@@ -15,6 +14,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
         public float Health;
 
         [SerializeField]
-        public AnimatorController defaultAnimator;
+        public AnimatorOverrideController defaultAnimator;
     }
 }

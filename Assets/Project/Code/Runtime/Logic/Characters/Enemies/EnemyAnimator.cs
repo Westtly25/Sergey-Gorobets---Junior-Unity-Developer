@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 {

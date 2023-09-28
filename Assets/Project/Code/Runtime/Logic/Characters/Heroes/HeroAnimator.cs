@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor.Animations;
 
 namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 {
@@ -18,7 +17,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         private void Awake() =>
             animator = GetComponent<Animator>();
 
-        public void SetAnimatorController(AnimatorController animatorController)
+        public void SetAnimatorController(AnimatorOverrideController animatorController)
         {
             if (animatorController == null)
                 return;
