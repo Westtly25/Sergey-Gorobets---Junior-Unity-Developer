@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d220e7a36c65145a2c82383a1462b4, type: 3}
   m_Name: Zombie-enemy-config
   m_EditorClassIdentifier: 
-  WalkSpeed: 1
-  RunSpeed: 2.5
+  WalkSpeed: 2
+  RunSpeed: 4
   Health: 100
-  defaultAnimator: {fileID: 9100000, guid: 8ade08a9c9340fa418317243ba160057, type: 2}
-  AttackDamage: 25
-  aggroZoneSize: 3
-  stopDistance: 0
+  DefaultAnimator: {fileID: 0}
+  AggroZoneSize: 6
+  StopDistance: 0

@@ -42,11 +42,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 595f82b00d20e4349b5904492418a64c
-    m_Address: Pistol Projectile
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c10e444f251b8f64293cded2784646db
     m_Address: Gameplay Window
     m_ReadOnly: 0

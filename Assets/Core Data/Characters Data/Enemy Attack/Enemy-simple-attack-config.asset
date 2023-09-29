@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3bdfa6f31b282498c6c95aa9d16ac1, type: 3}
   m_Name: Enemy-simple-attack-config
   m_EditorClassIdentifier: 
-  cooldown: 0.5
+  cooldown: 1
   range: 1
   damage: 20
   layerMask:

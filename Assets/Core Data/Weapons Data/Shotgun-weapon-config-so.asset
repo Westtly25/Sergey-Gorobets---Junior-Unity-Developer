@@ -16,6 +16,8 @@ MonoBehaviour:
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: 4070645750993628977, guid: e00551e987bb6ae4482429b5a7ac31b3, type: 3}
   animatorController: {fileID: 9100000, guid: dd8ffb6e585a45441a45b820af34c702, type: 2}
-  cooldown: 0.5
-  ammo: {fileID: 11400000, guid: ebcacf7fcb00596449b435cca9e71a89, type: 2}
+  cooldown: 1
+  ammoType: 2
+  damage: 50
   shootVfx: {fileID: 198437972640931972, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
+  hitVfx: {fileID: 198437972640931972, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}

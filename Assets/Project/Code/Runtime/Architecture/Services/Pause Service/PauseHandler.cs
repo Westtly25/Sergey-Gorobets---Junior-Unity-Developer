@@ -9,14 +9,13 @@ namespace Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system
     {
         private readonly List<IPauseListener> listeners = new(10);
         private bool isPaused;
+        private readonly DiContainer diContainer;
 
         public bool IsPaused
         {
             get => isPaused;
             private set => isPaused = value;
         }
-
-        private readonly DiContainer diContainer;
 
         [Inject]
         public PauseHandler(DiContainer diContainer) =>

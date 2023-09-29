@@ -13,14 +13,14 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
     {
         private readonly ISaveLoadService saveLoadService;
         private readonly IWindowsHandler windowsHandler;
-        private readonly DeathProgressWatcher enemyDeathProgressWatcher;
+        private readonly EnemyDeathWatcher enemyDeathProgressWatcher;
         private readonly IPauseHandler pauseHandler;
         private readonly Hero hero;
 
         [Inject]
         public CoreFlow(ISaveLoadService saveLoadService,
                         IWindowsHandler windowsHandler,
-                        DeathProgressWatcher enemyDeathProgressWatcher,
+                        EnemyDeathWatcher enemyDeathProgressWatcher,
                         IPauseHandler pauseHandler,
                         Hero hero)
         {
@@ -51,20 +51,22 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             enemyDeathProgressWatcher.AllEnemiesDead += OnWin;
         }
 
-        private void OnWin()
+        private async void OnWin()
         {
             Cursor.visible = true;
             windowsHandler.Show<WinWindow>();
             saveLoadService.SaveData.WinCount++;
             pauseHandler.SetPauseSimpleWay(true);
+            await saveLoadService.SaveAsync();
         }
 
-        private void OnLose()
+        private async void OnLose()
         {
             Cursor.visible = true;
             windowsHandler.Show<LoseWindow>();
-            saveLoadService.SaveData.WinCount++;
+            saveLoadService.SaveData.LoseCount--;
             pauseHandler.SetPauseSimpleWay(true);
+            await saveLoadService.SaveAsync();
         }
     }
 }

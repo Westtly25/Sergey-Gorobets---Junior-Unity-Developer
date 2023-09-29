@@ -46,6 +46,7 @@ namespace Assets.Code.Runtime.Services.Windows
         private async void Exite()
         {
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.MetaScene);
             await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }

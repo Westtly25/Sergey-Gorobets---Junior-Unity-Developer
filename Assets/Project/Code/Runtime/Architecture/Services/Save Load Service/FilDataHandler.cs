@@ -42,8 +42,10 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
         public void CreateFile(string filePath, string fileName)
         {
-            if (!File.Exists(Path.Combine(filePath, fileName)))
-                File.Create(Path.Combine(filePath, fileName));
+            string fullPath = Path.Combine(filePath, fileName);
+
+            if (!File.Exists(fullPath))
+                File.Create(fullPath);
         }
     }
 }

@@ -11,21 +11,28 @@ namespace Assets.Project.Code.Runtime.Logic.Weapons
         [SerializeField]
         private AnimatorOverrideController animatorController;
 
-        [SerializeField, Min(0)]
+        [SerializeField, Range(0.1f, 5f)]
         private float cooldown;
 
         [Header("Ammo")]
         [SerializeField]
-        private AmmoConfig ammo;
+        private AmmoType ammoType;
+        [SerializeField, Range(1, 100)]
+        private int damage;
 
         [Header("Visual Effect")]
         [SerializeField]
         private ParticleSystem shootVfx;
 
+        [SerializeField]
+        private ParticleSystem hitVfx;
+
         public Weapon Weapon => prefab;
         public float Cooldown => cooldown;
-        public AmmoConfig Ammo => ammo;
+        public AmmoType AmmoType => ammoType;
+        public float Damage => damage;
         public ParticleSystem ShootVfx => shootVfx;
+        public ParticleSystem HitVfx => hitVfx;
         public AnimatorOverrideController AnimatorController => animatorController;
     }
 }

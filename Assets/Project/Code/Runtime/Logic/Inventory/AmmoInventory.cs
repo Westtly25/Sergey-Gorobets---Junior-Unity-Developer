@@ -15,23 +15,23 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         {
             ammoList = new Dictionary<AmmoType, AmmoEntry>(3)
             {
-                { AmmoType.Pistol, new AmmoEntry(AmmoType.Pistol, 50, 9999) },
-                { AmmoType.Rifle, new AmmoEntry(AmmoType.Rifle, 100, 9999) },
-                { AmmoType.Shotgun, new AmmoEntry(AmmoType.Shotgun, 50, 9999) }
+                { AmmoType.Pistol, new AmmoEntry(AmmoType.Pistol, 50) },
+                { AmmoType.Rifle, new AmmoEntry(AmmoType.Rifle, 100) },
+                { AmmoType.Shotgun, new AmmoEntry(AmmoType.Shotgun, 50) }
             };
         }
 
-        public void Add(AmmoClipConfig ammoConfig)
+        public void Add(AmmoType ammo, int amount)
         {
-            AmmoEntry ammoToStack = Get(ammoConfig.BulletType);
+            AmmoEntry ammoToStack = Get(ammo);
 
             if (ammoToStack != null)
             {
-                ammoToStack.Stock += ammoConfig.Stock;
-                return;
+                ammoToStack.Stock += amount;
+                return;A
             }
 
-            AmmoEntry ammoToAdd = new AmmoEntry(ammoConfig.BulletType, ammoConfig.Stock, ammoConfig.MaxCapacity);
+            AmmoEntry ammoToAdd = new AmmoEntry(ammo, amount);
             ammoList.Add(ammoToAdd.BulletType, ammoToAdd);
         }
 

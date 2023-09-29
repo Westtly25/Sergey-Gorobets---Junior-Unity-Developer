@@ -24,10 +24,8 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
         private AmmoInventory ammoInventory;
 
         [Inject]
-        public void Construct(AmmoInventory ammoInventory)
-        {
+        public void Construct(AmmoInventory ammoInventory) =>
             this.ammoInventory = ammoInventory;
-        }
 
         private void Awake() =>
             mainCamera = Camera.main;
@@ -37,23 +35,33 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
             if (activeWeapon == null)
                 return;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
                 PerformShoot();
         }
 
-        public void SetWeapon(Weapon activeWeapon) =>
+        public void SetWeapon(Weapon activeWeapon)
+        {
             this.activeWeapon = activeWeapon;
+            ResetShootTimeCooldown();
+        }
+
 
         public void PerformShoot()
         {
-            if (!ammoInventory.IsAmmoEnoughForShoot(activeWeapon.WeaponConfig.Ammo.BulletType))
+            if (IsReadyToShoot())
+                return;
+
+            if (!ammoInventory.IsAmmoEnoughForShoot(activeWeapon.WeaponConfig.AmmoType))
                 return;
 
             CreateRaycast();
-            SpawnProjectile();
-            PerformEffects();
-            ammoInventory.Spend(activeWeapon.WeaponConfig.Ammo.BulletType, 1);
+            PerformShootEffect();
+            ammoInventory.Spend(activeWeapon.WeaponConfig.AmmoType, 1);
+            ResetShootTimeCooldown();
         }
+
+        private bool IsReadyToShoot() =>
+            lastShootTime + activeWeapon.WeaponConfig.Cooldown > Time.time;
 
         public void CreateRaycast()
         {
@@ -67,15 +75,18 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
 
                 if (hitCollider.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.ApplyDamage(activeWeapon.WeaponConfig.Ammo.Damage);
+                    damageable.ApplyDamage(activeWeapon.WeaponConfig.Damage);
                 }
+
+                PerformHitEffect(hitInfo.point);
             }
             else directionTo = ray.direction;
         }
 
         private ParticleSystem shootVisualEffect;
+        private ParticleSystem hitVisualEffect;
 
-        private void PerformEffects()
+        private void PerformShootEffect()
         {
             if (shootVisualEffect == null)
             {
@@ -87,14 +98,17 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
             shootVisualEffect.Play();
         }
 
-        private void SpawnProjectile()
+        private void PerformHitEffect(Vector3 at)
         {
-            Projectile projectile = Instantiate(activeWeapon.WeaponConfig.Ammo.Projectile,
-                                                activeWeapon.ShootPoint.transform.position,
-                                                Quaternion.LookRotation(directionTo, Vector3.up));
-            projectile.Launch();
+            if (hitVisualEffect == null)
+                hitVisualEffect = Instantiate(activeWeapon.WeaponConfig.ShootVfx);
+
+            hitVisualEffect.transform.position = at;
+            hitVisualEffect.Play();
         }
 
+        private void ResetShootTimeCooldown() =>
+            lastShootTime = Time.time;
         private Vector3 ScreenCenter() =>
             new Vector2(Screen.width / 2, Screen.height / 2);
     }

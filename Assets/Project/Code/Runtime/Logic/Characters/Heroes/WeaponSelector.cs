@@ -20,14 +20,18 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 
         [Header("Injected")]
         private WeaponsInventory inventoryHandler;
+        private DiContainer diContainer;
 
         [Header("Components")]
         private RaycastShoot shoot;
         private HeroAnimator animator;
 
         [Inject]
-        public void Construct(WeaponsInventory inventoryHandler) =>
+        public void Construct(WeaponsInventory inventoryHandler, DiContainer diContainer)
+        {
             this.inventoryHandler = inventoryHandler;
+            this.diContainer = diContainer;
+        }
 
         private void Awake() =>
             InitializeComponents();
@@ -83,7 +87,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
                 activeWeapon.gameObject.SetActive(true);
                 shoot.SetWeapon(activeWeapon);
                 animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
-
                 return;
             }
         }

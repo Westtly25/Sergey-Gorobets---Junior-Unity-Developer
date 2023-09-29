@@ -15,5 +15,5 @@ MonoBehaviour:
   WalkSpeed: 1
   RunSpeed: 3
   Health: 200
-  defaultAnimator: {fileID: 22100000, guid: 3690fe7e6bd64df40bb3072581d9b9b0, type: 2}
-  RotateSpeed: 100
+  DefaultAnimator: {fileID: 22100000, guid: 3690fe7e6bd64df40bb3072581d9b9b0, type: 2}
+  RotateSpeed: 500

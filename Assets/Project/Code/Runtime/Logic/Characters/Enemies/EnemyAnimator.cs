@@ -6,7 +6,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
     public sealed class EnemyAnimator : MonoBehaviour
     {
         private static readonly int Die = Animator.StringToHash("Die");
-        private static readonly int Attack = Animator.StringToHash("SimpleAttack");
+        private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 

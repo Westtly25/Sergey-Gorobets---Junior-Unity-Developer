@@ -14,6 +14,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
         public float Health;
 
         [SerializeField]
-        public AnimatorOverrideController defaultAnimator;
+        public AnimatorOverrideController DefaultAnimator;
     }
 }

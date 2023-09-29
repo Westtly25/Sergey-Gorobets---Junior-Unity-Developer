@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using Assets.Project.Code.Shared;
 using Assets.Code.Runtime.Services.Windows;
 using Assets.Project.Code.Runtime.Architecture.Services.Scene_Load_Service;
-using Assets.Project.Code.Shared;
 
 namespace Assets.Project.Code.Runtime.Architecture.Services.Windows.Windows_Types
 {
@@ -44,6 +43,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Windows.Windows_Type
         private async void Exit()
         {
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.MetaScene);
             await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }

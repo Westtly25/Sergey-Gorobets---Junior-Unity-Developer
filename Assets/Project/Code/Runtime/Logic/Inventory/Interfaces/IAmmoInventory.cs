@@ -1,5 +1,5 @@
-﻿using Assets.Project.Code.Runtime.Logic.Weapons;
-using System;
+﻿using System;
+using Assets.Project.Code.Runtime.Logic.Weapons;
 
 namespace Assets.Project.Code.Runtime.Logic.Inventory
 {
@@ -7,7 +7,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
     {
         event Action<AmmoEntry> AmmoChanged;
 
-        void Add(AmmoClipConfig ammoConfig);
+        void Add(AmmoType ammo, int amount);
         AmmoEntry Get(AmmoType ammoType);
         void Spend(AmmoType ammoType, int amount);
         bool IsAmmoEnoughForShoot(AmmoType ammoType);

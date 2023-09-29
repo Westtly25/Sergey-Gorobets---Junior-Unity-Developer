@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 {
     [Serializable]
-    public sealed class GameData
+    public class GameData
     {
         [SerializeField]
         [Range(byte.MinValue, byte.MaxValue)]
@@ -15,5 +15,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Save_Load_Service
 
         [SerializeField, Min(0)]
         public int LoseCount = 0;
+
+        public GameData() { }
     }
 }

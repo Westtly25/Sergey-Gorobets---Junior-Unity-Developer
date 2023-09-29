@@ -42,7 +42,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
 
         private void OnSlotDataUpdated(int id, WeaponConfig weapon)
         {
-            int amount = ammoInventory.Get(weapon.Ammo.BulletType).Stock;
+            int amount = ammoInventory.Get(weapon.AmmoType).Stock;
             inventorySlotViews[id].SetData(weapon.Icon, amount);
         }
 

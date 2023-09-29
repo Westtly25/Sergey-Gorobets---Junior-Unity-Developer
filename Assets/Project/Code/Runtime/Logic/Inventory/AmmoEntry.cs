@@ -15,11 +15,10 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
 
         public AmmoEntry() { }
 
-        public AmmoEntry(AmmoType bulletType, int stock, int maxCapacity)
+        public AmmoEntry(AmmoType bulletType, int stock)
         {
             this.bulletType = bulletType;
             this.stock = stock;
-            this.maxCapacity = maxCapacity;
         }
 
         public AmmoType BulletType

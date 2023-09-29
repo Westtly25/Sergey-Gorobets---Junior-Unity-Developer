@@ -6,13 +6,13 @@ namespace Assets.Project.Code.Runtime.Logic.Weapons
     public class Weapon : MonoBehaviour
     {
         [SerializeField]
-        private ShootFromPoint shootPoint;
+        private ShootPoint shootPoint;
 
         [Header("Config Data")]
         [SerializeField]
         private WeaponConfig weaponConfig;
 
-        public ShootFromPoint ShootPoint => shootPoint;
+        public ShootPoint ShootPoint => shootPoint;
         public WeaponConfig WeaponConfig => weaponConfig;
     }
 }

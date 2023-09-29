@@ -3,7 +3,6 @@ using UnityEngine.AI;
 using Assets.Project.Code.Runtime.Logic.Fsm;
 using Assets.Project.Code.Runtime.Logic.Shooting;
 using Assets.Project.Code.Runtime.Logic.Characters.Enemies.States;
-using Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system;
 
 namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 {
@@ -40,8 +39,11 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 
         public Health Health => health;
 
-        private void Awake() =>
+        private void Awake()
+        {
             Initialize();
+            InitializeFsm();
+        }
 
         private void Start() =>
             enemyFsm.SetState<AwaitState>();
@@ -57,8 +59,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
             rigBody = GetComponent<Rigidbody>();
             detector = GetComponentInChildren<TargetDetector>();
             attackBehaviour = GetComponent<AttackBehaviour>();
-
-            InitializeFsm();
+            detector.Initialized(enemyConfig.AggroZoneSize);
         }
 
         private void InitializeFsm()
@@ -73,7 +74,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
             BindTransitions();
             BindAnyTransitions();
         }
-
         private void BindTransitions()
         {
             enemyFsm.AddTransition<AwaitState, ChaseState>(condition: () => detector.Target != null);
@@ -81,7 +81,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
             enemyFsm.AddTransition<ChaseState, AttackState>(condition: () => chaseState.TargetReached);
             enemyFsm.AddTransition<AttackState, ChaseState>(condition: () => !attackState.TargetInAttackZone);
         }
-
         private void BindAnyTransitions() =>
             enemyFsm.AddAnyTransition<DeathState>(condition: () => health.IsDead == true);
 
