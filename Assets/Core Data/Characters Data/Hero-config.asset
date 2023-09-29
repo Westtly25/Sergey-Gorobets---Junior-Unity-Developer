@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d23ecade4894148a7d9afc36d7687c, type: 3}
   m_Name: Hero-config
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Project.Code.Runtime.Logic.Characters.Enemies:HeroConfig
-  WalkSpeed: 0
-  RunSpeed: 0
-  Health: 0
+  WalkSpeed: 1
+  RunSpeed: 3
+  Health: 200
   defaultAnimator: {fileID: 22100000, guid: 3690fe7e6bd64df40bb3072581d9b9b0, type: 2}
-  RotateSpeed: 0
+  RotateSpeed: 100
