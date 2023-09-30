@@ -35,7 +35,8 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
             if (activeWeapon == null)
                 return;
 
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0) ||
+                Input.GetMouseButton(0))
                 PerformShoot();
         }
 
@@ -51,13 +52,12 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
             if (IsReadyToShoot())
                 return;
 
-            if (!ammoInventory.IsAmmoEnoughForShoot(activeWeapon.WeaponConfig.AmmoType))
-                return;
-
-            CreateRaycast();
-            PerformShootEffect();
-            ammoInventory.Spend(activeWeapon.WeaponConfig.AmmoType, 1);
-            ResetShootTimeCooldown();
+            if (ammoInventory.TrySpend(activeWeapon.WeaponConfig.AmmoType, 1))
+            {
+                CreateRaycast();
+                PerformShootEffect();
+                ResetShootTimeCooldown();
+            }
         }
 
         private bool IsReadyToShoot() =>

@@ -28,7 +28,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
             if (ammoToStack != null)
             {
                 ammoToStack.Stock += amount;
-                return;A
+                return;
             }
 
             AmmoEntry ammoToAdd = new AmmoEntry(ammo, amount);
@@ -39,11 +39,25 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         {
             AmmoEntry ammoToSpend = Get(ammoType);
 
-            if (ammoToSpend != null && ammoToSpend.Stock > 0)
+            if (ammoToSpend != null && ammoToSpend.Stock > amount)
             {
                 ammoToSpend.Stock -= amount;
                 AmmoChanged?.Invoke(ammoToSpend);
             }
+        }
+
+        public bool TrySpend(AmmoType ammoType, int amount)
+        {
+            AmmoEntry ammoToSpend = Get(ammoType);
+
+            if (ammoToSpend != null && ammoToSpend.Stock > amount)
+            {
+                ammoToSpend.Stock -= amount;
+                AmmoChanged?.Invoke(ammoToSpend);
+                return true;
+            }
+
+            return false;
         }
 
         public AmmoEntry Get(AmmoType ammoType)
@@ -53,8 +67,5 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
 
             return null;
         }
-
-        public bool IsAmmoEnoughForShoot(AmmoType ammoType) =>
-            Get(ammoType).Stock > 0;
     }
 }

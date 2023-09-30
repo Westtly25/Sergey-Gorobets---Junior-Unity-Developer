@@ -10,6 +10,5 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         void Add(AmmoType ammo, int amount);
         AmmoEntry Get(AmmoType ammoType);
         void Spend(AmmoType ammoType, int amount);
-        bool IsAmmoEnoughForShoot(AmmoType ammoType);
     }
 }

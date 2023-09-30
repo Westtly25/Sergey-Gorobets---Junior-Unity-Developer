@@ -9,10 +9,8 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Scene_Load_Service
         private readonly IAssetProvider assetProvider;
 
         [Inject]
-        public SceneLoader(IAssetProvider assetProvider)
-        {
+        public SceneLoader(IAssetProvider assetProvider) =>
             this.assetProvider = assetProvider;
-        }
 
         public async UniTask LoadSceneAsync(string address) =>
             await assetProvider.LoadSceneAsync(address);

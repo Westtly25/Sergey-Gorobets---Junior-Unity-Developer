@@ -64,7 +64,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
         {
             Cursor.visible = true;
             windowsHandler.Show<LoseWindow>();
-            saveLoadService.SaveData.LoseCount--;
+            saveLoadService.SaveData.LoseCount++;
             pauseHandler.SetPauseSimpleWay(true);
             await saveLoadService.SaveAsync();
         }

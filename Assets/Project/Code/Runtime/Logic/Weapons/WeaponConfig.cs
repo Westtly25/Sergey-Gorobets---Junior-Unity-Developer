@@ -23,7 +23,6 @@ namespace Assets.Project.Code.Runtime.Logic.Weapons
         [Header("Visual Effect")]
         [SerializeField]
         private ParticleSystem shootVfx;
-
         [SerializeField]
         private ParticleSystem hitVfx;
 
