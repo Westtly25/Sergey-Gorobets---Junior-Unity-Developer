@@ -17,8 +17,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
         private readonly IWindowsHandler windowsHandler;
         private readonly EnemyDeathWatcher enemyDeathProgressWatcher;
         private readonly IPauseHandler pauseHandler;
-        private readonly HeroFactory heroFactory;
-        private readonly EnemyFactory enemyFactory;
         private readonly Hero hero;
 
         [Inject]
@@ -37,16 +35,16 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
 
         public async void Initialize()
         {
-            await windowsHandler.Initialize();
             await pauseHandler.Initialize();
+            pauseHandler.SetPauseSimpleWay(false);
             enemyDeathProgressWatcher.Initialize();
+            await windowsHandler.Initialize();
 
             windowsHandler.Show<GameplayWindow>();
             Cursor.visible = false;
 
             Subscribe();
 
-            pauseHandler.SetPauseSimpleWay(false);
         }
 
         public void Dispose() =>
@@ -69,7 +67,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             Cursor.visible = true;
             windowsHandler.Show<WinWindow>();
             saveLoadService.SaveData.WinCount++;
-            await UniTask.Delay(TimeSpan.FromSeconds(4f));
             pauseHandler.SetPauseSimpleWay(true);
             await saveLoadService.SaveAsync();
         }

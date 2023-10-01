@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.AI;
 using Assets.Project.Code.Runtime.Logic.Fsm;
 using Assets.Project.Code.Runtime.Logic.Shooting;
+using Assets.Project.Code.Runtime.Logic.Utilities;
 using Assets.Project.Code.Runtime.Logic.Characters.Enemies.States;
 
 namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 {
+    [RequireComponent(typeof(UniqueId))]
     [RequireComponent (typeof(Rigidbody))]
     [RequireComponent (typeof(NavMeshAgent))]
     [RequireComponent (typeof(EnemyAnimator))]
@@ -19,6 +21,8 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
         private Health health;
 
         [Header("Require Components")]
+        [SerializeField]
+        private UniqueId uniqueId;
         [SerializeField]
         private EnemyAnimator animator;
         [SerializeField]
@@ -38,6 +42,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
         private StateMachine<Enemy> enemyFsm;
 
         public Health Health => health;
+        public string EnemyId => uniqueId.Id;
 
         private void Awake()
         {
@@ -53,13 +58,16 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 
         public void Initialize()
         {
-            health.SetData(enemyConfig.Health, enemyConfig.Health);
+            uniqueId = GetComponent<UniqueId>();
             animator = GetComponent<EnemyAnimator>();
             agent = GetComponent<NavMeshAgent>();
             rigBody = GetComponent<Rigidbody>();
             detector = GetComponentInChildren<TargetDetector>();
             attackBehaviour = GetComponent<AttackBehaviour>();
+
+            health.SetData(enemyConfig.Health, enemyConfig.Health);
             detector.Initialized(enemyConfig.AggroZoneSize);
+            uniqueId.GenerateId();
         }
 
         private void InitializeFsm()

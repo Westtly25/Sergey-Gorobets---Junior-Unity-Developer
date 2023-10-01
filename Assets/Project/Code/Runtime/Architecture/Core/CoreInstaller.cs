@@ -43,7 +43,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
                      .FromNew().AsSingle().WithArguments(levelData);
 
             Container.BindInterfacesAndSelfTo<Hero>()
-                     .FromInstance(hero).AsSingle().NonLazy();
+                     .FromInstance(hero).AsSingle();
 
             Container.BindInterfacesAndSelfTo<AmmoInventory>()
                      .FromNew().AsSingle().NonLazy();

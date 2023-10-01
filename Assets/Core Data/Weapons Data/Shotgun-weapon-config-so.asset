@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Shotgun-weapon-config-so
   m_EditorClassIdentifier: 
   title: Shotgun
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: -1745883260, guid: 99c634c7129ff9e47b89c92f977cac65, type: 3}
   prefab: {fileID: 4070645750993628977, guid: e00551e987bb6ae4482429b5a7ac31b3, type: 3}
-  animatorController: {fileID: 9100000, guid: dd8ffb6e585a45441a45b820af34c702, type: 2}
+  animatorController: {fileID: 22100000, guid: 85be188617db66e4394fd0ff5ea0ba99, type: 2}
   cooldown: 1
   ammoType: 2
   damage: 50

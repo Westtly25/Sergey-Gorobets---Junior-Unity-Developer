@@ -70,6 +70,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
                 DisableActiveWeapon();
                 activeWeapon = weapons[index];
                 weapons[index].gameObject.SetActive(true);
+                shoot.SetWeapon(activeWeapon);
                 animator.SetAnimatorController(activeWeapon.WeaponConfig.AnimatorController);
             }
         }

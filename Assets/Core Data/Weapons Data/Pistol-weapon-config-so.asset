@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Pistol-weapon-config-so
   m_EditorClassIdentifier: 
   title: Pistol
-  icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: -1577726583, guid: 99c634c7129ff9e47b89c92f977cac65, type: 3}
   prefab: {fileID: 2058001686351734541, guid: 5e4065065dd1b7941b41a686c8c71a10, type: 3}
   animatorController: {fileID: 22100000, guid: 846a72867a9c08147a112fde0936cac7, type: 2}
-  cooldown: 0.5
+  cooldown: 0.3
   ammoType: 0
   damage: 10
   shootVfx: {fileID: 198437972640931972, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}

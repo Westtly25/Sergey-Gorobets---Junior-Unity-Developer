@@ -31,7 +31,11 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
                 if (item.Value == null)
                 {
                     weaponsList[item.Key] = weapon;
-                    InventoryUpdated.Invoke(item.Key, weapon);
+                    InventoryUpdated?.Invoke(item.Key, weapon);
+
+#if UNITY_EDITOR
+                    Debug.Log($"Add item to Weapon Inventory {weapon.name}");
+#endif
                     return;
                 }
             }

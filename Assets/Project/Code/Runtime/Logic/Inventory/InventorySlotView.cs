@@ -17,7 +17,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
 
         private void Awake()
         {
-            iconImage = GetComponentInChildren<Image>();
+            iconImage = GetComponent<Image>();
             ammoText = GetComponentInChildren<TextMeshProUGUI>();
         }
 

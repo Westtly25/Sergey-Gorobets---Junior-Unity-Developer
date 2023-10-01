@@ -10,13 +10,7 @@ namespace Assets.Project.Code.Runtime.Logic.Level
     {
         [SerializeField]
         private List<Enemy> enemies;
-        [SerializeField]
-        private SpawnPoint[] spawnPointEnemy;
-        [SerializeField]
-        private SpawnPoint spawnPointHero;
 
         public List<Enemy> Enemies => enemies;
-        public SpawnPoint[] SpawnPointEnemy => spawnPointEnemy;
-        public SpawnPoint SpawnPointHero => spawnPointHero;
     }
 }

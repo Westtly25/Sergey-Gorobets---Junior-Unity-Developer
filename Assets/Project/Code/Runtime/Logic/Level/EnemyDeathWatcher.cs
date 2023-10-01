@@ -41,7 +41,9 @@ namespace Assets.Project.Code.Runtime.Logic.Level
                 return;
 
             for (int i = 0; i < activeEnemies.Count; i++)
+            {
                 activeEnemies[i].Health.OnDead -= OnEnemyDead;
+            }
         }
 
         public void OnEnemyDead()

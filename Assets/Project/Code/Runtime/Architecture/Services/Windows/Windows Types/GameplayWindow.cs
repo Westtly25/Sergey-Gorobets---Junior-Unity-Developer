@@ -23,20 +23,10 @@ namespace Assets.Code.Runtime.Services.Windows
             windowsHandler = diContainer.Resolve<IWindowsHandler>();
             ammoInventory = diContainer.Resolve<IAmmoInventory>();
             inventoryHandler = diContainer.Resolve<IWeaponsInventory>();
-            hero = diContainer.Resolve<Hero>();
+            //hero = diContainer.Resolve<Hero>();
 
             //healthPresenter.Initialize(hero.Health);
             inventoryView.Initialize(inventoryHandler, ammoInventory);
-        }
-
-        public override void Subscribe()
-        {
-            base.Subscribe();
-        }
-
-        public override void UnSubscribe()
-        {
-            base.UnSubscribe();
         }
     }
 }

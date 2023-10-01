@@ -48,19 +48,20 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
 
         public void PerformShoot()
         {
-            if (IsReadyToShoot())
+            if (!IsReadyToShoot())
                 return;
 
             if (ammoInventory.TrySpend(activeWeapon.WeaponConfig.AmmoType, 1))
             {
                 CreateRaycast();
                 PerformShootEffect();
-                ResetShootTimeCooldown();
             }
+
+            ResetShootTimeCooldown();
         }
 
         private bool IsReadyToShoot() =>
-            lastShootTime + activeWeapon.WeaponConfig.Cooldown > Time.time;
+            lastShootTime + activeWeapon.WeaponConfig.Cooldown < Time.time;
 
         public void CreateRaycast()
         {
@@ -91,9 +92,9 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
             {
                 shootVisualEffect = Instantiate(activeWeapon.WeaponConfig.ShootVfx);
                 shootVisualEffect.transform.SetParent(activeWeapon.ShootPoint.transform, true);
-                shootVisualEffect.transform.localPosition = activeWeapon.ShootPoint.transform.localPosition;
             }
 
+            shootVisualEffect.transform.localPosition = activeWeapon.ShootPoint.transform.localPosition;
             shootVisualEffect.Play();
         }
 

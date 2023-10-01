@@ -17,9 +17,6 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
                 inventorySlotViews = GetComponentsInChildren<InventorySlotView>();
         }
 
-        private void OnDisable() =>
-            UnSubscribe();
-
         public void Initialize(IWeaponsInventory weaponInventory, IAmmoInventory ammoInventory)
         {
             this.weaponInventory = weaponInventory;
@@ -44,14 +41,21 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         {
             int amount = ammoInventory.Get(weapon.AmmoType).Stock;
             inventorySlotViews[id].SetData(weapon.Icon, amount);
+
+#if UNITY_EDITOR
+            Debug.Log($"Weapon {weapon.name} added to {this}");
+#endif
         }
 
         private void OnAmmoChanged(AmmoEntry ammoEntry)
         {
             foreach (var item in weaponInventory.WeaponsList)
             {
-                int amount = ammoInventory.Get(item.Value.AmmoType).Stock;
-                inventorySlotViews[item.Key].SetData(amount);
+                if (item.Value != null && item.Value.AmmoType == ammoEntry.BulletType)
+                {
+                    int amount = ammoInventory.Get(item.Value.AmmoType).Stock;
+                    inventorySlotViews[item.Key].SetData(amount);
+                }
             }
         }
     }
