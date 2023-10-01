@@ -15,6 +15,6 @@ MonoBehaviour:
   WalkSpeed: 2
   RunSpeed: 4
   Health: 100
-  DefaultAnimator: {fileID: 0}
+  DefaultAnimator: {fileID: 22100000, guid: 63e5dfc8480c01f4dba2d554abe9d741, type: 2}
   AggroZoneSize: 6
   StopDistance: 0

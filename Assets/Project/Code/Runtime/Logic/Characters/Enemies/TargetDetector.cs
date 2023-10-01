@@ -4,12 +4,12 @@ using Assets.Project.Code.Runtime.Logic.Characters.Heroes;
 namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 {
     [RequireComponent(typeof(SphereCollider))]
-    public class TargetDetector : MonoBehaviour
+    public sealed class TargetDetector : MonoBehaviour
     {
         [SerializeField]
         private SphereCollider sphereCollider;
 
-        public Transform Target;
+        public Hero Target { get; private set; }
 
         public void Initialized(float dectedRange) =>
             sphereCollider.radius = dectedRange;
@@ -19,8 +19,8 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<Hero>(out Hero hero))
-                Target = hero.transform;
+            if (other.TryGetComponent<Hero>(out Hero detected))
+                Target = detected;
         }
 
         private void OnTriggerExit(Collider other) =>

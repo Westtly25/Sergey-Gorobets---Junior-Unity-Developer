@@ -36,6 +36,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Services.Windows.Windows_Type
         private async void Restart()
         {
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy-simple-attack-config
   m_EditorClassIdentifier: 
   cooldown: 1
-  range: 1
+  range: 1.5
   damage: 20
   layerMask:
     serializedVersion: 2

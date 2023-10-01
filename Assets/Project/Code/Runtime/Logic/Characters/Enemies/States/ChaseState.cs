@@ -13,7 +13,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
 
         private Transform target;
 
-        public bool TargetReached { get; private set; }
+        public bool TargetReached { get; private set; } = false;
 
         public Enemy Initializer { get; private set; }
 
@@ -30,7 +30,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
 
         public void OnEnter()
         {
-            target = detector.Target;
+            target = detector.Target.transform;
         }
 
         public void OnExit() =>
@@ -40,14 +40,15 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
         {
             TargetReached = IsTargetPositionReached();
 
-            Follow();
+            if (!TargetReached)
+                Follow();
         }
 
         private void Follow()
         {
             agent.destination = target.position;
             agent.transform.LookAt(target);
-            animator.Move(agent.speed);
+            animator.Move(agent.velocity.magnitude);
         }
 
         private void StopFollow()

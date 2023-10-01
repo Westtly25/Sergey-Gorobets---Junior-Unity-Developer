@@ -8,12 +8,6 @@ namespace Assets.Project.Code.Runtime.Logic.UI_Components
         [SerializeField]
         private Image progress;
 
-        private void Awake()
-        {
-            progress = progress != null ?
-                progress : GetComponentInChildren<Image>();
-        }
-
         public void Change(float value) =>
             progress.fillAmount = value;
     }

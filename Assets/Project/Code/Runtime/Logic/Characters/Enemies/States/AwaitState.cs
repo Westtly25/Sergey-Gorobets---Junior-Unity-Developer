@@ -17,7 +17,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
 
         public void OnEnter()
         {
-            animator.StopMove();
         }
 
         public void OnExit()

@@ -1,5 +1,7 @@
+using System;
 using Zenject;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 using Assets.Code.Runtime.Services.Windows;
 using Assets.Project.Code.Runtime.Logic.Level;
 using Assets.Project.Code.Runtime.Logic.Characters.Heroes;
@@ -9,12 +11,14 @@ using Assets.Project.Code.Runtime.Architecture.Services.Windows.Windows_Types;
 
 namespace Assets.Project.Code.Runtime.Architecture.Core
 {
-    public sealed class CoreFlow : IInitializable
+    public sealed class CoreFlow : IInitializable, IDisposable
     {
         private readonly ISaveLoadService saveLoadService;
         private readonly IWindowsHandler windowsHandler;
         private readonly EnemyDeathWatcher enemyDeathProgressWatcher;
         private readonly IPauseHandler pauseHandler;
+        private readonly HeroFactory heroFactory;
+        private readonly EnemyFactory enemyFactory;
         private readonly Hero hero;
 
         [Inject]
@@ -45,10 +49,19 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             pauseHandler.SetPauseSimpleWay(false);
         }
 
+        public void Dispose() =>
+            UnSubscribe();
+
         private void Subscribe()
         {
             hero.Health.OnDead += OnLose;
             enemyDeathProgressWatcher.AllEnemiesDead += OnWin;
+        }
+
+        private void UnSubscribe()
+        {
+            hero.Health.OnDead -= OnLose;
+            enemyDeathProgressWatcher.AllEnemiesDead -= OnWin;
         }
 
         private async void OnWin()
@@ -56,6 +69,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             Cursor.visible = true;
             windowsHandler.Show<WinWindow>();
             saveLoadService.SaveData.WinCount++;
+            await UniTask.Delay(TimeSpan.FromSeconds(4f));
             pauseHandler.SetPauseSimpleWay(true);
             await saveLoadService.SaveAsync();
         }
@@ -68,5 +82,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             pauseHandler.SetPauseSimpleWay(true);
             await saveLoadService.SaveAsync();
         }
+
     }
 }

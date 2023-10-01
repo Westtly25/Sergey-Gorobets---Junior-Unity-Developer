@@ -6,10 +6,10 @@ using Assets.Project.Code.Runtime.Logic.Characters.Enemies;
 namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 {
     [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(WeaponsCollector))]
     [RequireComponent(typeof(HeroAnimator))]
-    [RequireComponent(typeof(HeroMovementController))]
+    [RequireComponent(typeof(WeaponsCollector))]
     [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(MovementController))]
     public class Hero : MonoBehaviour, IDamageable
     {
         [SerializeField]
@@ -17,22 +17,33 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         [SerializeField]
         private HeroConfig heroConfig;
         [SerializeField]
-        private HeroMovementController controller;
+        private MovementController controller;
+        [SerializeField]
+        private HeroAnimator animator;
 
         public Health Health => health;
 
         private void Awake()
         {
-            controller = GetComponent<HeroMovementController>();
+            controller = GetComponent<MovementController>();
+            animator = GetComponent<HeroAnimator>();
         }
 
         private void Start()
         {
             health.SetData(heroConfig.Health, heroConfig.Health);
             controller.Initialize(heroConfig);
+
+            health.OnDead += OnDead;
         }
 
         public void ApplyDamage(float damage) =>
             health.AddDamage(damage);
+
+        private void OnDead()
+        {
+            animator.PlayDeath();
+            health.OnDead -= OnDead;
+        }
     }
 }

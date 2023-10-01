@@ -27,8 +27,10 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
             this.attackBehaviour = attackBehaviour;
         }
 
-        public void OnEnter() =>
-            target = detector.Target;
+        public void OnEnter()
+        {
+            target = detector.Target.transform;
+        }
 
         public void OnExit()
         {
@@ -45,6 +47,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies.States
         }
 
         private bool IsTargetInAttackZone() =>
-            DataExtensions.SqrMagnitudeTo(agent.transform.position, target.position) <= agent.stoppingDistance;
+            DataExtensions.SqrMagnitudeTo(agent.transform.position, target.position) <= attackBehaviour.AttackConfig.Range;
     }
 }

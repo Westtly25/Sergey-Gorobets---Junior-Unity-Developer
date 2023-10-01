@@ -30,7 +30,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Bootstrap
         {
             await assetProvider.Initialize();
             saveLoadService.Initialize();
-            await saveLoadService.LoadAsync();
 
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.MetaScene);

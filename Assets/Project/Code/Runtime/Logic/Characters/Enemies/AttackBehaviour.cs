@@ -8,7 +8,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
     public class AttackBehaviour : MonoBehaviour
     {
         private const float OffsetY = 0.5f;
-        [SerializeField]
         private bool isAttacking = false;
 
         [SerializeField]
@@ -19,6 +18,8 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 
         private EnemyAnimator animator;
 
+        public AttackConfig AttackConfig => attackConfig;
+
         private void Awake()
         {
             animator = GetComponent<EnemyAnimator>();
@@ -27,9 +28,9 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
         public void Initialize(AttackConfig attackConfig) =>
             this.attackConfig = attackConfig;
 
-        public virtual void PerformAttack(Transform target)
+        public void PerformAttack(Transform target)
         {
-            if (target == null && attackConfig == null)
+            if (target == null)
                 return;
 
             if (isAttacking)
@@ -41,7 +42,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
 
         public virtual void InterruptAttack()
         {
-            if (routine == null)
+            if (routine == null || isAttacking == false)
                 return;
 
             animator.StopAttack();
@@ -70,7 +71,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
                 yield return new WaitForSeconds(attackConfig.Cooldown);
             }
 
-            isAttacking = false;
             InterruptAttack();
         }
 

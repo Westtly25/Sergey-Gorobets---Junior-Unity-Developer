@@ -14,7 +14,7 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
         [SerializeField, Space(4)]
         private Weapon activeWeapon;
 
-        [SerializeField]
+        [HideInInspector]
         private Camera mainCamera;
 
         private float lastShootTime;
@@ -45,7 +45,6 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
             this.activeWeapon = activeWeapon;
             ResetShootTimeCooldown();
         }
-
 
         public void PerformShoot()
         {
@@ -109,6 +108,7 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
 
         private void ResetShootTimeCooldown() =>
             lastShootTime = Time.time;
+
         private Vector3 ScreenCenter() =>
             new Vector2(Screen.width / 2, Screen.height / 2);
     }

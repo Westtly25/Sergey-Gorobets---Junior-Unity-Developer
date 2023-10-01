@@ -21,6 +21,7 @@ namespace Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system
         public PauseHandler(DiContainer diContainer) =>
             this.diContainer = diContainer;
 
+        #region Advanced Pause
         public async UniTask Initialize()
         {
             List<IPauseListener> dependencies = diContainer.ResolveAll<IPauseListener>();
@@ -44,7 +45,8 @@ namespace Assets.Project.Code.Scripts.Runtime.Architecture.Pause_system
             for (int i = 0; i < listeners.Count; i++)
                 listeners[i].Pause(isPaused);
         }
-        
+        #endregion
+
         public void SetPauseSimpleWay(bool isPaused)
         {
             IsPaused = isPaused;

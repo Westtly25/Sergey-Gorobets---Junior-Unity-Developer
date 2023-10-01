@@ -81,8 +81,11 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Enemies
             enemyFsm.AddTransition<ChaseState, AttackState>(condition: () => chaseState.TargetReached);
             enemyFsm.AddTransition<AttackState, ChaseState>(condition: () => !attackState.TargetInAttackZone);
         }
-        private void BindAnyTransitions() =>
+        private void BindAnyTransitions()
+        {
             enemyFsm.AddAnyTransition<DeathState>(condition: () => health.IsDead == true);
+            enemyFsm.AddAnyTransition<AwaitState>(condition: () => detector.Target != null && detector.Target.Health.IsDead == true);
+        }
 
         public void ApplyDamage(float damage) =>
             health.AddDamage(damage);

@@ -6,7 +6,7 @@ namespace Assets.Project.Code.Runtime.Logic.Characters
     [Serializable]
     public sealed class Health : Attribute
     {
-        [SerializeField, Min(-1)]
+        [SerializeField, Min(0)]
         private float health;
         [SerializeField]
         private float maxHealth;

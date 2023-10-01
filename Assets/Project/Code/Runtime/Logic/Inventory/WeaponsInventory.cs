@@ -11,6 +11,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
         [SerializeField]
         private Dictionary<int, WeaponConfig> weaponsList;
 
+        public Dictionary<int, WeaponConfig> WeaponsList => weaponsList;
         public event Action<int, WeaponConfig> InventoryUpdated;
 
         public WeaponsInventory()

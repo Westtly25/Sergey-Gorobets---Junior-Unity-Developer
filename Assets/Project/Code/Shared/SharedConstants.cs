@@ -22,6 +22,9 @@
         {
             public const string MainMenuView = "MainMenu";
             public const string GameplayView = "Gameplay";
+            public const string WinView = "Gameplay";
+            public const string LoseView = "Gameplay";
+            public const string QuiteView = "Gameplay";
         }
 
         public static class ScenesAddresses

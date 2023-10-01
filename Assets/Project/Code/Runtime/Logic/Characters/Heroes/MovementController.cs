@@ -1,11 +1,10 @@
-﻿using Zenject;
-using UnityEngine;
+﻿using UnityEngine;
 using Assets.Project.Code.Runtime.Logic.Camera_Logic;
 using Assets.Project.Code.Runtime.Logic.Characters.Enemies;
 
 namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
 {
-    public class HeroMovementController : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
         [SerializeField]
         private CharacterController characterController;
@@ -43,9 +42,9 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
                 if (Input.GetKey(KeyCode.LeftShift))
                     speedToMove = heroConfig.RunSpeed * Time.deltaTime;
 
-                heroAnimator.Move(speedToMove);
                 characterController.Move(direction * speedToMove);
                 targetRotation = Quaternion.LookRotation(direction);
+                heroAnimator.Move(characterController.velocity.magnitude);
             }
             else heroAnimator.StopMove();
 

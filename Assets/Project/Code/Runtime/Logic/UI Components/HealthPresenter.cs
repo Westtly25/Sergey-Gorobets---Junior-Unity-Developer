@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Cysharp.Threading.Tasks.Linq;
 using Assets.Project.Code.Runtime.Logic.Characters;
 
 namespace Assets.Project.Code.Runtime.Logic.UI_Components
@@ -24,14 +23,14 @@ namespace Assets.Project.Code.Runtime.Logic.UI_Components
         }
 
         public void Initialize(Health health)
-        {   
+        {
             this.health = health;
-
             health.HealthChanged += OnHealthChanged;
         }
 
         private void OnHealthChanged(float value)
         {
+            Debug.Log("Health changed in UI");
             float progress = value / health.MaxHealth;
             healthBar.Change(progress);
         }

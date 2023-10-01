@@ -28,7 +28,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
             Subscribe();
         }
 
-        private void Subscribe()
+        public void Subscribe()
         {
             weaponInventory.InventoryUpdated += OnSlotDataUpdated;
             ammoInventory.AmmoChanged += OnAmmoChanged;
@@ -36,7 +36,7 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
 
         private void UnSubscribe()
         {
-            weaponInventory.InventoryUpdated += OnSlotDataUpdated;
+            weaponInventory.InventoryUpdated -= OnSlotDataUpdated;
             ammoInventory.AmmoChanged -= OnAmmoChanged;
         }
 
@@ -48,7 +48,11 @@ namespace Assets.Project.Code.Runtime.Logic.Inventory
 
         private void OnAmmoChanged(AmmoEntry ammoEntry)
         {
-
+            foreach (var item in weaponInventory.WeaponsList)
+            {
+                int amount = ammoInventory.Get(item.Value.AmmoType).Stock;
+                inventorySlotViews[item.Key].SetData(amount);
+            }
         }
     }
 }

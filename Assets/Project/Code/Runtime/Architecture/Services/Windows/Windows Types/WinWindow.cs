@@ -1,11 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Threading.Tasks;
-using UnityEngine.SceneManagement;
-using Assets.Project.Code.Runtime.Architecture.Services.Scene_Load_Service;
-using Unity.VisualScripting;
 using Assets.Project.Code.Shared;
+using Assets.Project.Code.Runtime.Architecture.Services.Scene_Load_Service;
 
 namespace Assets.Code.Runtime.Services.Windows
 {
@@ -39,6 +35,7 @@ namespace Assets.Code.Runtime.Services.Windows
         private async void Restart()
         {
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
+            await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.LoadSceneAsync(SharedConstants.ScenesAddresses.CoreScene);
             await sceneLoader.UnloadSceneAsync(SharedConstants.ScenesAddresses.LoadScene);
         }
