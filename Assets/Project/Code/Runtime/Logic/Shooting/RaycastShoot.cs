@@ -8,10 +8,10 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
     public sealed class RaycastShoot : MonoBehaviour
     {
         [Header("Options")]
-        [SerializeField, Space(4)]
+        [SerializeField]
         private LayerMask layerMask;
 
-        [SerializeField, Space(4)]
+        [SerializeField]
         private Weapon activeWeapon;
 
         [HideInInspector]
@@ -63,7 +63,7 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
         private bool IsReadyToShoot() =>
             lastShootTime + activeWeapon.WeaponConfig.Cooldown < Time.time;
 
-        public void CreateRaycast()
+        private void CreateRaycast()
         {
             Ray ray = mainCamera.ScreenPointToRay(ScreenCenter());
 

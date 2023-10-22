@@ -12,18 +12,15 @@ namespace Assets.Project.Code.Runtime.Architecture.Bootstrap
         private readonly IAssetProvider assetProvider;
         private readonly ISaveLoadService saveLoadService;
         private readonly SceneLoader sceneLoader;
-        private readonly InputReader inputReader;
 
         [Inject]
         public BootstrapFlow(IAssetProvider assetProvider,
                              ISaveLoadService saveLoadService,
-                             SceneLoader sceneLoader,
-                             InputReader inputReader)
+                             SceneLoader sceneLoader)
         {
             this.assetProvider = assetProvider;
             this.saveLoadService = saveLoadService;
             this.sceneLoader = sceneLoader;
-            this.inputReader = inputReader;
         }
 
         public async void Initialize()

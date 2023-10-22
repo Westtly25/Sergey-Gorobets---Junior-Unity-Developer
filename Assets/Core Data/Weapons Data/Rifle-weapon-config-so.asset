@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rifle-weapon-config-so
   m_EditorClassIdentifier: 
   title: Rifl
-  icon: {fileID: -1577726583, guid: 99c634c7129ff9e47b89c92f977cac65, type: 3}
+  icon: {fileID: -1697681908, guid: 99c634c7129ff9e47b89c92f977cac65, type: 3}
   prefab: {fileID: 5693657758470025789, guid: e34deed2196eca949b59e634577fa1b3, type: 3}
   animatorController: {fileID: 9100000, guid: dd8ffb6e585a45441a45b820af34c702, type: 2}
   cooldown: 0.6

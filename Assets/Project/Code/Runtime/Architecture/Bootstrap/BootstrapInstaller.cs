@@ -29,11 +29,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Bootstrap
                      .AsSingle()
                      .NonLazy();
 
-            Container.BindInterfacesAndSelfTo<InputReader>()
-                     .FromNew()
-                     .AsSingle()
-                     .NonLazy();
-
             Container.BindInterfacesAndSelfTo<BootstrapFlow>()
                      .FromNew()
                      .AsSingle()

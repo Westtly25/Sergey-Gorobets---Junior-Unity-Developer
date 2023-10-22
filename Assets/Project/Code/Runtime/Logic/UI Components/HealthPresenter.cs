@@ -17,10 +17,11 @@ namespace Assets.Project.Code.Runtime.Logic.UI_Components
                 this.healthBar = progressBar;
         }
 
-        private void OnDisable()
-        {
+        public void Subscribe() =>
+            health.HealthChanged += OnHealthChanged;
+
+        public void UnSubscribe() =>
             health.HealthChanged -= OnHealthChanged;
-        }
 
         public void Initialize(Health health)
         {
@@ -30,7 +31,6 @@ namespace Assets.Project.Code.Runtime.Logic.UI_Components
 
         private void OnHealthChanged(float value)
         {
-            Debug.Log("Health changed in UI");
             float progress = value / health.MaxHealth;
             healthBar.Change(progress);
         }
