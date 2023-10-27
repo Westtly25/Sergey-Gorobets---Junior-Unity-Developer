@@ -39,7 +39,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
             Container.BindInterfacesAndSelfTo<LevelData>()
                      .FromInstance(levelData).AsSingle().NonLazy();
 
-            Container.BindInterfacesAndSelfTo<EnemyDeathWatcher>()
+            Container.BindInterfacesAndSelfTo<EnemyDefeatWatcher>()
                      .FromNew().AsSingle().WithArguments(levelData);
 
             Container.BindInterfacesAndSelfTo<Hero>()

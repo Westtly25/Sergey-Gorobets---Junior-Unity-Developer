@@ -6,7 +6,7 @@ using Assets.Project.Code.Runtime.Logic.Characters.Enemies;
 
 namespace Assets.Project.Code.Runtime.Logic.Level
 {
-    public sealed class EnemyDeathWatcher
+    public sealed class EnemyDefeatWatcher
     {
         private List<Enemy> activeEnemies;
 
@@ -16,7 +16,7 @@ namespace Assets.Project.Code.Runtime.Logic.Level
         private readonly LevelData levelData;
 
         [Inject]
-        public EnemyDeathWatcher(LevelData levelData) =>
+        public EnemyDefeatWatcher(LevelData levelData) =>
             this.levelData = levelData;
 
         public void Initialize()

@@ -15,14 +15,14 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
     {
         private readonly ISaveLoadService saveLoadService;
         private readonly IWindowsHandler windowsHandler;
-        private readonly EnemyDeathWatcher enemyDeathProgressWatcher;
+        private readonly EnemyDefeatWatcher enemyDeathProgressWatcher;
         private readonly IPauseHandler pauseHandler;
         private readonly Hero hero;
 
         [Inject]
         public CoreFlow(ISaveLoadService saveLoadService,
                         IWindowsHandler windowsHandler,
-                        EnemyDeathWatcher enemyDeathProgressWatcher,
+                        EnemyDefeatWatcher enemyDeathProgressWatcher,
                         IPauseHandler pauseHandler,
                         Hero hero)
         {
