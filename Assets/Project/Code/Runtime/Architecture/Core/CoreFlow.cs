@@ -42,6 +42,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
 
             windowsHandler.Show<GameplayWindow>();
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
 
             Subscribe();
 
@@ -64,7 +65,7 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
 
         private async void OnWin()
         {
-            Cursor.visible = true;
+            UnlockCurosr();
             windowsHandler.Show<WinWindow>();
             saveLoadService.SaveData.WinCount++;
             pauseHandler.SetPauseSimpleWay(true);
@@ -73,12 +74,17 @@ namespace Assets.Project.Code.Runtime.Architecture.Core
 
         private async void OnLose()
         {
-            Cursor.visible = true;
+            UnlockCurosr();
             windowsHandler.Show<LoseWindow>();
             saveLoadService.SaveData.LoseCount++;
             pauseHandler.SetPauseSimpleWay(true);
             await saveLoadService.SaveAsync();
         }
 
+        private static void UnlockCurosr()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
