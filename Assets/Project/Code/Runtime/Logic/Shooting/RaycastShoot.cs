@@ -2,6 +2,7 @@
 using UnityEngine;
 using Assets.Project.Code.Runtime.Logic.Weapons;
 using Assets.Project.Code.Runtime.Logic.Inventory;
+using Assets.Project.Code.Runtime.Logic.Camera_Logic;
 
 namespace Assets.Project.Code.Runtime.Logic.Shooting
 {
@@ -24,8 +25,11 @@ namespace Assets.Project.Code.Runtime.Logic.Shooting
         private AmmoInventory ammoInventory;
 
         [Inject]
-        public void Construct(AmmoInventory ammoInventory) =>
+        public void Construct(AmmoInventory ammoInventory, CameraController cameraController)
+        {
             this.ammoInventory = ammoInventory;
+            this.mainCamera = cameraController.GetComponent<Camera>();
+        }
 
         private void Awake() =>
             mainCamera = Camera.main;
