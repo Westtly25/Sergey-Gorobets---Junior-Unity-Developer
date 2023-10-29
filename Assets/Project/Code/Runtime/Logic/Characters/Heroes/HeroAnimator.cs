@@ -14,7 +14,6 @@ namespace Assets.Project.Code.Runtime.Logic.Characters.Heroes
         [SerializeField]
         private Animator animator;
 
-
         private void Awake() =>
             animator = GetComponent<Animator>();
 

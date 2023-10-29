@@ -11,6 +11,6 @@ namespace Assets.Project.Code.Runtime.Logic.Utilities
         private void Awake() => GenerateId();
 
         public void GenerateId() =>
-          Id = $"{gameObject.scene.name}_{Guid.NewGuid().ToString()}";
+          Id = $"{ gameObject.scene.name }_{ Guid.NewGuid().ToString() }";
     }
 }
