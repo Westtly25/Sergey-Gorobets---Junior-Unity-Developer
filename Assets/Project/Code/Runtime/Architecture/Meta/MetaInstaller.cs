@@ -1,7 +1,6 @@
 ﻿using Zenject;
 using UnityEngine;
 using Assets.Code.Runtime.Services.Windows;
-using Assets.Project.Code.Runtime.Architecture.Links_Service;
 
 namespace Assets.Project.Code.Runtime.Architecture.Meta
 {
@@ -16,11 +15,6 @@ namespace Assets.Project.Code.Runtime.Architecture.Meta
         public override void InstallBindings()
         {
             BindWindows();
-
-            Container.BindInterfacesAndSelfTo<LinksProvider>()
-                     .FromNew()
-                     .AsSingle()
-                     .NonLazy();
 
             Container.BindInterfacesAndSelfTo<MetaFlow>()
                      .FromNew()
