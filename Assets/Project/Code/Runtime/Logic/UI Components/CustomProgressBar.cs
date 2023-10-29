@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Project.Code.Runtime.Logic.UI_Components
@@ -8,7 +9,19 @@ namespace Assets.Project.Code.Runtime.Logic.UI_Components
         [SerializeField]
         private Image progress;
 
-        public void Change(float value) =>
+        [SerializeField]
+        private TextMeshProUGUI valueText;
+
+        private void Awake()
+        {
+            progress = GetComponent<Image>();
+            valueText = GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        public void Change(float value)
+        {
             progress.fillAmount = value;
+            valueText.text = value.ToString();
+        }
     }
 }
